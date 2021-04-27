@@ -1,17 +1,19 @@
 Property:
     - name 
     - main image 
+    - images * 
     - price / day
     - description 
-    - place 
+    - place *
+    - category *
 
 
-    - rating :
+    - rating *:
         - room show rating 
         - add rate [booked]
         - room avg rating 
 
-    - book :
+    - book *:
         - book 
         - check avaiblity 
 
@@ -21,14 +23,14 @@ User
 
 blog :
     - title 
-    - tags 
+    - tags *
     - image 
     - create at 
     - authror 
     - description 
-    - categories
+    - categories *
 
-    - comments
+    - comments 
 
 
 about :
