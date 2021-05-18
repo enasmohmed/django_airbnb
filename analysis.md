@@ -35,9 +35,9 @@ blog :
 
 about :
     - image 
-    - what we do 
-    - our misson 
-    - our goals 
+    - what_we_do 
+    - our_mission 
+    - our_goals 
 
     - FAQ :
         - title 

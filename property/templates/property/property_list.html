@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% block body %}
+<div id="fh5co-wrapper">
+  <div id="fh5co-page">
+    <div id="fh5co-header">
+
+    </div>
+    <!-- end:fh5co-header -->
+    <div class="fh5co-parallax" style="background-image: url(/static/images/slider1.jpg);"
+      data-stellar-background-ratio="0.5">
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row">
+          <div
+            class="col-md-12 col-md-offset-0 col-sm-12 col-sm-offset-0 col-xs-12 col-xs-offset-0 text-center fh5co-table">
+            <div class="fh5co-intro fh5co-table-cell">
+              <h1 class="text-center">Choose Our Hotel</h1>
+              <p>Made with love by the fine folks at <a href="http://freehtml5.co">FreeHTML5.co</a></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="fh5co-hotel-section">
+      <div class="container">
+        <div class="row">
+          {% for property in object_list %}
+          <div class="col-md-4">
+            <div class="hotel-content">
+              <div class="hotel-grid" style="background-image: url({{property.image.url}});">
+                <div class="price"><small>For as low as</small><span>${{property.price}}/night</span></div>
+                <a class="book-now text-center" href="{{property.get_absolute_url}}"><i class="ti-calendar"></i> Book
+                  Now</a>
+              </div>
+              <div class="desc">
+                <h3><a href="{{property.get_absolute_url}}">{{property.name}}</a></h3>
+                <div class="start-rating">
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star"></span>
+                  <span class="fa fa-star"></span>
+<!--                  <span>8 Rating</span>-->
+                </div>
+                <p>{{property.description}}</p>
+                <p><i class="fa fa-clock-o"></i> {{property.created_at}}</p>
+                <span><i class="fa fa-map-marker"></i>  {{property.place}}</span>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+    {% endblock body %}
