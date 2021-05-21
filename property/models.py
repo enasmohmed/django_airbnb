@@ -30,7 +30,7 @@ class Property(models.Model):
     
 
 class PropertyImages(models.Model):
-    property = models.ForeignKey(Property, related_name='property_images', on_delete=models.CASCADE)
+    property = models.ForeignKey(Property, related_name='property_image', on_delete=models.CASCADE)
     image = models.ImageField(upload_to='property_images/')
 
     def __str__(self):

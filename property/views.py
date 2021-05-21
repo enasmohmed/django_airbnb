@@ -8,6 +8,7 @@ from property.models import Property
 
 class PropertyList(ListView):
     model = Property
+    paginate_by = 1
     # filter
     # pagination
 

@@ -38,13 +38,14 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    ## my apps 
+    # my apps
     'accounts',
     'property',
     'blog',
     'about',
     'settings',
     'taggit',
+    'django_summernote',
 ]
 
 MIDDLEWARE = [
@@ -134,3 +135,4 @@ STATICFILES_DIRS = [
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 
+X_FRAME_OPTIONS = 'SAMEORIGIN'

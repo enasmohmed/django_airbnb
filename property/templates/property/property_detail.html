@@ -2,227 +2,318 @@
 {% load static %}
 
 {% block body %}
-<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-  <ol class="carousel-indicators">
-    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-  </ol>
-  <div class="carousel-inner">
-    <div class="carousel-item mb-5 active" style="margin-top: 10%;">
-      <img class="d-block w-50 mx-auto" src="{{property.image.url}}" alt="First slide">
-    </div>
-    <div class="carousel-item mb-5" style="margin-top: 10%;">
-      <img class="d-block w-50 mx-auto" src="{{property.image.url}}" alt="Second slide">
-    </div>
-    <div class="carousel-item mb-5" style="margin-top: 10%;">
-      <img class="d-block w-50 mx-auto" src="{{property.image.url}}" alt="Third slide">
-    </div>
-  </div>
-  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev" style="left: 21%;top: 10%;">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="sr-only">Previous</span>
-  </a>
-  <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next" style="right: 21%;top: 10%;">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="sr-only">Next</span>
-  </a>
-</div>
-
-
-<section class="ftco-section ftco-degree-bg">
-	<div class="container">
-		<div class="row">
-			<div class="col-lg-10 mx-auto">
+<div id="fh5co-wrapper">
+	<div id="fh5co-page">
+		<!-- end:fh5co-header -->
+		<div class="fh5co-parallax" style="background-image: url(/static/images/slider1.jpg);"
+			data-stellar-background-ratio="0.5">
+			<div class="overlay"></div>
+			<div class="container">
 				<div class="row">
-					<div class="col-md-12 ftco-animate">
-						<div class="single-slider owl-carousel">
-
-							{% for property_image in property_images %}
-							<div class="item">
-								<div class="hotel-img" style="background-image: url({{property_image.image.url}});">
-								</div>
-							</div>
-							{% endfor %}
+					<div
+						class="col-md-12 col-md-offset-0 col-sm-12 col-sm-offset-0 col-xs-12 col-xs-offset-0 text-center fh5co-table">
+						<div class="fh5co-intro fh5co-table-cell">
+							<h1 class="text-center">Choose Our Hotel</h1>
+							<p>Made with love by the fine folks at <a href="http://freehtml5.co">FreeHTML5.co</a></p>
 						</div>
 					</div>
-					<div class="col-md-12 hotel-single mt-4 mb-5 ftco-animate">
-						<span>Our Best hotels &amp; Rooms</span>
-						<h2>{{property.name}}</h2>
-						<p class="rate mb-5">
-							<span class="loc"><a href="#"><i class="icon-map"></i> {{property.place}}</a></span>
-							<span class="star">
-								<i class="icon-star"></i>
-								<i class="icon-star"></i>
-								<i class="icon-star"></i>
-								<i class="icon-star"></i>
-								<i class="icon-star-o"></i>
-								{{review_count}} Rating</span>
-						</p>
-						<p> {{property.description|safe}}</p>
-
-					</div>
-
-
-					<div class="col-md-12 hotel-single ftco-animate mb-5 mt-4">
-						<h4 class="mb-5">Check Availability &amp; Booking</h4>
-						{% comment '' %}
-
-						<div class="fields">
-							<div class="row">
-								<div class="col-md-6">
-									<div class="form-group">
-										<input type="text" class="form-control" placeholder="Name">
-									</div>
-								</div>
-								<div class="col-md-6">
-									<div class="form-group">
-										<input type="text" class="form-control" placeholder="Email">
-									</div>
-								</div>
-								<div class="col-md-6">
-									<div class="form-group">
-										<input type="text" id="checkin_date" class="form-control"
-											placeholder="Date from">
-									</div>
-								</div>
-								<div class="col-md-6">
-									<div class="form-group">
-										<input type="text" id="checkin_date" class="form-control" placeholder="Date to">
-									</div>
-								</div>
-								<div class="col-md-6">
-									<div class="form-group">
-										<div class="select-wrap one-third">
-											<div class="icon"><span class="ion-ios-arrow-down"></span></div>
-											<select name="" id="" class="form-control" placeholder="Guest">
-												<option value="0">Guest</option>
-												<option value="1">1</option>
-												<option value="2">2</option>
-												<option value="3">3</option>
-												<option value="4">4</option>
-											</select>
-										</div>
-									</div>
-								</div>
-								<div class="col-md-6">
-									<div class="form-group">
-										<div class="select-wrap one-third">
-											<div class="icon"><span class="ion-ios-arrow-down"></span></div>
-											<select name="" id="" class="form-control" placeholder="Children">
-												<option value="0">Children</option>
-												<option value="1">1</option>
-												<option value="2">2</option>
-												<option value="3">3</option>
-												<option value="4">4</option>
-											</select>
-										</div>
-									</div>
-								</div>
-								<div class="col-md-12">
-									<div class="form-group">
-										<input type="submit" value="Check Availability" class="btn btn-primary py-3">
-									</div>
-								</div>
-							</div>
-						</div>
-						{% endcomment %}
-						<form method=POST>
-
-								<button type="submit" class="btn btn-primary py-3">Check Availability</button>
-						</form>
-					</div>
-					<div class="col-md-12 hotel-single ftco-animate mb-5 mt-4">
-						<h4 class="mb-4">Review &amp; Ratings</h4>
-						<div class="row">
-							<div class="col-md-6">
-								<form method="post" class="star-rating">
-									<div class="form-check">
-										<input type="checkbox" class="form-check-input" id="exampleCheck1">
-										<label class="form-check-label" for="exampleCheck1">
-											<p class="rate"><span><i class="icon-star"></i><i class="icon-star"></i><i
-														class="icon-star"></i><i class="icon-star"></i><i
-														class="icon-star"></i> 100 Ratings</span></p>
-										</label>
-									</div>
-									<div class="form-check">
-										<input type="checkbox" class="form-check-input" id="exampleCheck1">
-										<label class="form-check-label" for="exampleCheck1">
-											<p class="rate"><span><i class="icon-star"></i><i class="icon-star"></i><i
-														class="icon-star"></i><i class="icon-star"></i><i
-														class="icon-star-o"></i> 30 Ratings</span></p>
-										</label>
-									</div>
-									<div class="form-check">
-										<input type="checkbox" class="form-check-input" id="exampleCheck1">
-										<label class="form-check-label" for="exampleCheck1">
-											<p class="rate"><span><i class="icon-star"></i><i class="icon-star"></i><i
-														class="icon-star"></i><i class="icon-star-o"></i><i
-														class="icon-star-o"></i> 5 Ratings</span></p>
-										</label>
-									</div>
-									<div class="form-check">
-										<input type="checkbox" class="form-check-input" id="exampleCheck1">
-										<label class="form-check-label" for="exampleCheck1">
-											<p class="rate"><span><i class="icon-star"></i><i class="icon-star"></i><i
-														class="icon-star-o"></i><i class="icon-star-o"></i><i
-														class="icon-star-o"></i> 0 Ratings</span></p>
-										</label>
-									</div>
-									<div class="form-check">
-										<input type="checkbox" class="form-check-input" id="exampleCheck1">
-										<label class="form-check-label" for="exampleCheck1">
-											<p class="rate"><span><i class="icon-star"></i><i class="icon-star-o"></i><i
-														class="icon-star-o"></i><i class="icon-star-o"></i><i
-														class="icon-star-o"></i> 0 Ratings</span></p>
-										</label>
-									</div>
-								</form>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-12 hotel-single ftco-animate mb-5 mt-5">
-						<h4 class="mb-4">Related Hotels</h4>
-						<div class="row">
-
-							{% for single_property in get_related %}
-							<div class="col-md-4">
-								<div class="destination">
-									<a href="{{single_property.get_absolute_url}}" class="img img-2"
-										style="background-image: url(images/hotel-1.jpg);"></a>
-									<div class="text p-3">
-										<div class="d-flex">
-											<div class="one">
-												<h3><a href="{{single_property.get_absolute_url}}">{{single_property}}</a></h3>
-												<p class="rate">
-													<i class="icon-star"></i>
-													<i class="icon-star"></i>
-													<i class="icon-star"></i>
-													<i class="icon-star"></i>
-													<i class="icon-star-o"></i>
-													<span>8 Rating</span>
-												</p>
-											</div>
-											<div class="two">
-												<span class="price per-price">${{single_property.price}}<br><small>/night</small></span>
-											</div>
-										</div>
-										<p>{{single_property.description}}</p>
-										<hr>
-										<p class="bottom-area d-flex">
-											<span><i class="icon-map-o"></i> {{single_property.place}}</span>
-											<span class="ml-auto"><a href="{{single_property.get_absolute_url}}">Book Now</a></span>
-										</p>
-									</div>
-								</div>
-							</div>
-							{% endfor %}
-						</div>
-					</div>
-
 				</div>
-			</div> <!-- .col-md-8 -->
+			</div>
+		</div>
+
+
+		<div class="container mt-5">
+			<div class="row">
+				<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+					<ol class="carousel-indicators">
+						<li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+						<li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+						<li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+					</ol>
+					<div class="carousel-inner">
+					{% for image in object.property_image.all %}
+						<div class="carousel-item {% if forloop.first %}active{% endif %}">
+							<img class="d-block w-100" src="{{image.image.url}}" alt="First slide">
+						</div>
+					{% endfor %}
+					</div>
+					<a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+						<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+						<span class="sr-only">Previous</span>
+					</a>
+					<a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+						<span class="carousel-control-next-icon" aria-hidden="true"></span>
+						<span class="sr-only">Next</span>
+					</a>
+				</div>
+				<section class="ftco-section ftco-degree-bg">
+					<div class="container">
+						<div class="row">
+							<div class="col-lg-10 mx-auto">
+								<div class="row">
+									<div class="col-md-12 hotel-single mt-5 mb-5 ftco-animate">
+										<span>Our Best hotels &amp; Rooms</span>
+										<h2>{{property.name}}</h2>
+										<p class="rate mb-5">
+											<span class="loc"><a href="#"><i class="icon-map"></i> 291 South 21th
+													Street, Suite 721
+													New
+													York NY 10016</a></span>
+											<span class="star">
+												<i class="icon-star"></i>
+												<i class="icon-star"></i>
+												<i class="icon-star"></i>
+												<i class="icon-star"></i>
+												<i class="icon-star-o"></i>
+												8 Rating</span>
+										</p>
+										<p>{{object.description}}</p>
+									</div>
+									<div class="col-md-12 hotel-single ftco-animate mb-5 mt-4">
+										<h4 class="mb-5">Check Availability &amp; Booking</h4>
+										<div class="fields">
+											<div class="row">
+												<div class="col-md-6">
+													<div class="form-group">
+														<input type="text" class="form-control" placeholder="Name">
+													</div>
+												</div>
+												<div class="col-md-6">
+													<div class="form-group">
+														<input type="text" class="form-control" placeholder="Email">
+													</div>
+												</div>
+												<div class="col-md-6">
+													<div class="form-group">
+														<input type="text" id="checkin_date" class="form-control"
+															placeholder="Date from">
+													</div>
+												</div>
+												<div class="col-md-6">
+													<div class="form-group">
+														<input type="text" id="checkin_date" class="form-control"
+															placeholder="Date to">
+													</div>
+												</div>
+												<div class="col-md-6">
+													<div class="form-group">
+														<div class="select-wrap one-third">
+															<div class="icon"><span class="ion-ios-arrow-down"></span>
+															</div>
+															<select name="" id="" class="form-control"
+																placeholder="Guest">
+																<option value="0">Guest</option>
+																<option value="1">1</option>
+																<option value="2">2</option>
+																<option value="3">3</option>
+																<option value="4">4</option>
+															</select>
+														</div>
+													</div>
+												</div>
+												<div class="col-md-6">
+													<div class="form-group">
+														<div class="select-wrap one-third">
+															<div class="icon"><span class="ion-ios-arrow-down"></span>
+															</div>
+															<select name="" id="" class="form-control"
+																placeholder="Children">
+																<option value="0">Children</option>
+																<option value="1">1</option>
+																<option value="2">2</option>
+																<option value="3">3</option>
+																<option value="4">4</option>
+															</select>
+														</div>
+													</div>
+												</div>
+												<div class="col-md-12">
+													<div class="form-group">
+														<input type="submit" value="Check Availability"
+															class="btn btn-primary py-3">
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="col-md-12 hotel-single ftco-animate mb-5 mt-4">
+										<h4 class="mb-4">Review &amp; Ratings</h4>
+										<div class="row">
+											<div class="col-md-6">
+												<form method="post" class="star-rating">
+													<div class="form-check">
+														<input type="checkbox" class="form-check-input"
+															id="exampleCheck1">
+														<label class="form-check-label" for="exampleCheck1">
+															<p class="rate"><span><i class="icon-star"></i><i
+																		class="icon-star"></i><i
+																		class="icon-star"></i><i
+																		class="icon-star"></i><i class="icon-star"></i>
+																	100
+																	Ratings</span></p>
+														</label>
+													</div>
+													<div class="form-check">
+														<input type="checkbox" class="form-check-input"
+															id="exampleCheck1">
+														<label class="form-check-label" for="exampleCheck1">
+															<p class="rate"><span><i class="icon-star"></i><i
+																		class="icon-star"></i><i
+																		class="icon-star"></i><i
+																		class="icon-star"></i><i
+																		class="icon-star-o"></i> 30
+																	Ratings</span></p>
+														</label>
+													</div>
+													<div class="form-check">
+														<input type="checkbox" class="form-check-input"
+															id="exampleCheck1">
+														<label class="form-check-label" for="exampleCheck1">
+															<p class="rate"><span><i class="icon-star"></i><i
+																		class="icon-star"></i><i
+																		class="icon-star"></i><i
+																		class="icon-star-o"></i><i
+																		class="icon-star-o"></i> 5
+																	Ratings</span></p>
+														</label>
+													</div>
+													<div class="form-check">
+														<input type="checkbox" class="form-check-input"
+															id="exampleCheck1">
+														<label class="form-check-label" for="exampleCheck1">
+															<p class="rate"><span><i class="icon-star"></i><i
+																		class="icon-star"></i><i
+																		class="icon-star-o"></i><i
+																		class="icon-star-o"></i><i
+																		class="icon-star-o"></i> 0
+																	Ratings</span></p>
+														</label>
+													</div>
+													<div class="form-check">
+														<input type="checkbox" class="form-check-input"
+															id="exampleCheck1">
+														<label class="form-check-label" for="exampleCheck1">
+															<p class="rate"><span><i class="icon-star"></i><i
+																		class="icon-star-o"></i><i
+																		class="icon-star-o"></i><i
+																		class="icon-star-o"></i><i
+																		class="icon-star-o"></i> 0
+																	Ratings</span></p>
+														</label>
+													</div>
+												</form>
+											</div>
+										</div>
+									</div>
+									<div class="col-md-12 hotel-single ftco-animate mb-5 mt-5">
+										<h4 class="mb-4">Related Hotels</h4>
+										<div class="row">
+											<div class="col-md-4">
+												<div class="destination">
+													<a href="hotel-single.html" class="img img-2"
+														style="background-image: url(images/hotel-1.jpg);"></a>
+													<div class="text p-3">
+														<div class="d-flex">
+															<div class="one">
+																<h3><a href="hotel-single.html">Hotel, Italy</a></h3>
+																<p class="rate">
+																	<i class="icon-star"></i>
+																	<i class="icon-star"></i>
+																	<i class="icon-star"></i>
+																	<i class="icon-star"></i>
+																	<i class="icon-star-o"></i>
+																	<span>8 Rating</span>
+																</p>
+															</div>
+															<div class="two">
+																<span
+																	class="price per-price">$40<br><small>/night</small></span>
+															</div>
+														</div>
+														<p>Far far away, behind the word mountains, far from the
+															countries</p>
+														<hr>
+														<p class="bottom-area d-flex">
+															<span><i class="icon-map-o"></i> Miami, Fl</span>
+															<span class="ml-auto"><a href="#">Book Now</a></span>
+														</p>
+													</div>
+												</div>
+											</div>
+											<div class="col-md-4">
+												<div class="destination">
+													<a href="hotel-single.html" class="img img-2"
+														style="background-image: url(images/hotel-2.jpg);"></a>
+													<div class="text p-3">
+														<div class="d-flex">
+															<div class="one">
+																<h3><a href="hotel-single.html">Hotel, Italy</a></h3>
+																<p class="rate">
+																	<i class="icon-star"></i>
+																	<i class="icon-star"></i>
+																	<i class="icon-star"></i>
+																	<i class="icon-star"></i>
+																	<i class="icon-star-o"></i>
+																	<span>8 Rating</span>
+																</p>
+															</div>
+															<div class="two">
+																<span
+																	class="price per-price">$40<br><small>/night</small></span>
+															</div>
+														</div>
+														<p>Far far away, behind the word mountains, far from the
+															countries</p>
+														<hr>
+														<p class="bottom-area d-flex">
+															<span><i class="icon-map-o"></i> Miami, Fl</span>
+															<span class="ml-auto"><a href="#">Book Now</a></span>
+														</p>
+													</div>
+												</div>
+											</div>
+											<div class="col-md-4">
+												<div class="destination">
+													<a href="hotel-single.html" class="img img-2"
+														style="background-image: url(images/hotel-3.jpg);"></a>
+													<div class="text p-3">
+														<div class="d-flex">
+															<div class="one">
+																<h3><a href="hotel-single.html">Hotel, Italy</a></h3>
+																<p class="rate">
+																	<i class="icon-star"></i>
+																	<i class="icon-star"></i>
+																	<i class="icon-star"></i>
+																	<i class="icon-star"></i>
+																	<i class="icon-star-o"></i>
+																	<span>8 Rating</span>
+																</p>
+															</div>
+															<div class="two">
+																<span
+																	class="price per-price">$40<br><small>/night</small></span>
+															</div>
+														</div>
+														<p>Far far away, behind the word mountains, far from the
+															countries</p>
+														<hr>
+														<p class="bottom-area d-flex">
+															<span><i class="icon-map-o"></i> Miami, Fl</span>
+															<span class="ml-auto"><a href="#">Book Now</a></span>
+														</p>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+
+								</div>
+							</div> <!-- .col-md-8 -->
+						</div>
+					</div>
+				</section> <!-- .section -->
+			</div>
 		</div>
 	</div>
-</section> <!-- .section -->
+</div>
 {% endblock body %}
