@@ -40,13 +40,13 @@
 								{% endbuttons %}
 							</form>
 						</div>
-					
+
 					</div>
-                    <div class="col-lg-9">
+                    <div class="col-lg-9 mt-2">
 						<div class="row">
 							{% for property in object_list %}
 							<div class="col-md-4">
-								<div class="hotel-content">
+								<div class="hotel-content" style="width: 109%;">
 									<div class="hotel-grid" style="background-image: url({{property.image.url}});">
 										<div class="price"><small>For as low as</small><span>${{property.price}}/night</span>
 										</div>

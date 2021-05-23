@@ -8539,9 +8539,7 @@ div.cs-select span {
   color: #52565b;
 }
 
-#fh5co-hotel-section .hotel-content{
-    width: 16.3em;
-}
+
 #fh5co-hotel-section .hotel-content .hotel-grid {
   background-repeat: no-repeat;
   background-size: cover;
@@ -9281,6 +9279,9 @@ input[type="text"] {
     margin-bottom: 30px;
 }
 
+.sidebar-wrap .heading{
+    text-transform: uppercase;
+}
 .form-check {
     position: relative;
     display: block;
@@ -9299,6 +9300,102 @@ input[type="text"] {
   line-height: 0;
 }
 }
+
+
+/* Start Blog */
+
+#fh5co-blog-section .desc .meta > div {
+  display: inline-block;
+  margin-right: 5px;
+  margin-bottom: 5px;
+  font-size: 15px; 
+}
+#fh5co-blog-section .desc .meta > div a {
+  color: #b3b3b3;
+  font-size: 15px; 
+}
+#fh5co-blog-section  .desc .meta > div a:hover {
+  color: #cccccc; 
+}
+
+#fh5co-blog-section .desc .tag {
+  color: #b3b3b3;
+}
+
+.ftco-section{
+  padding: 6em 0;
+  position: relative;
+}
+.tagcloud a {
+  text-transform: uppercase;
+  display: inline-block;
+  padding: 4px 10px;
+  margin-bottom: 7px;
+  margin-right: 4px;
+  border-radius: 4px;
+  color: #000000;
+  border: 1px solid #ccc;
+  font-size: 11px; }
+  .tagcloud a:hover {
+  border: 1px solid #000;
+}
+
+
+.sidebar-box {
+  margin-bottom: 30px;
+  padding: 25px;
+  font-size: 15px;
+  width: 100%;
+  float: left;
+  background: #fff; 
+}
+.sidebar-box *:last-child {
+  margin-bottom: 0; 
+}
+.sidebar-box h3 {
+  font-size: 18px;
+  margin-bottom: 15px; 
+}
+
+.categories li, .sidelink li {
+  position: relative;
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px dotted #dee2e6;
+  list-style: none; 
+}
+.categories li:last-child, .sidelink li:last-child {
+  margin-bottom: 0;
+  border-bottom: none;
+  padding-bottom: 0; 
+}
+.categories li a, .sidelink li a {
+  display: block; 
+}
+.categories li a span, .sidelink li a span {
+  position: absolute;
+  right: 0;
+  top: 0;
+  color: #ccc;
+ }
+.categories li.active a, .sidelink li.active a {
+  color: #000000;
+  font-style: italic; 
+}
+
+.hotel-img,
+.hero-wrap,
+.img,
+.blog-img,
+.user-img {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+
+/* End Blog */
+
 
 /* Start Page Detail */
 
