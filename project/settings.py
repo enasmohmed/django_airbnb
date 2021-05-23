@@ -46,6 +46,8 @@ INSTALLED_APPS = [
     'settings',
     'taggit',
     'django_summernote',
+    'bootstrap4',
+    'django_filters',
 ]
 
 MIDDLEWARE = [
@@ -136,3 +138,5 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 
 X_FRAME_OPTIONS = 'SAMEORIGIN'
+
+DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'

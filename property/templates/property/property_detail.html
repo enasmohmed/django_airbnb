@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
-
+{% load bootstrap4 %}
 {% block body %}
 <div id="fh5co-wrapper">
 	<div id="fh5co-page">
@@ -31,11 +31,11 @@
 						<li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
 					</ol>
 					<div class="carousel-inner">
-					{% for image in object.property_image.all %}
+						{% for image in object.property_image.all %}
 						<div class="carousel-item {% if forloop.first %}active{% endif %}">
 							<img class="d-block w-100" src="{{image.image.url}}" alt="First slide">
 						</div>
-					{% endfor %}
+						{% endfor %}
 					</div>
 					<a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
 						<span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -53,12 +53,10 @@
 								<div class="row">
 									<div class="col-md-12 hotel-single mt-5 mb-5 ftco-animate">
 										<span>Our Best hotels &amp; Rooms</span>
-										<h2>{{property.name}}</h2>
+										<h2>{{object.name}}</h2>
 										<p class="rate mb-5">
-											<span class="loc"><a href="#"><i class="icon-map"></i> 291 South 21th
-													Street, Suite 721
-													New
-													York NY 10016</a></span>
+											<span class="loc"><a href="#"><i class="icon-map"></i>
+													{{object.place}}</a></span>
 											<span class="star">
 												<i class="icon-star"></i>
 												<i class="icon-star"></i>
@@ -67,74 +65,17 @@
 												<i class="icon-star-o"></i>
 												8 Rating</span>
 										</p>
-										<p>{{object.description}}</p>
+										<p>{{object.description|safe}}</p>
 									</div>
 									<div class="col-md-12 hotel-single ftco-animate mb-5 mt-4">
 										<h4 class="mb-5">Check Availability &amp; Booking</h4>
-										<div class="fields">
-											<div class="row">
-												<div class="col-md-6">
-													<div class="form-group">
-														<input type="text" class="form-control" placeholder="Name">
-													</div>
-												</div>
-												<div class="col-md-6">
-													<div class="form-group">
-														<input type="text" class="form-control" placeholder="Email">
-													</div>
-												</div>
-												<div class="col-md-6">
-													<div class="form-group">
-														<input type="text" id="checkin_date" class="form-control"
-															placeholder="Date from">
-													</div>
-												</div>
-												<div class="col-md-6">
-													<div class="form-group">
-														<input type="text" id="checkin_date" class="form-control"
-															placeholder="Date to">
-													</div>
-												</div>
-												<div class="col-md-6">
-													<div class="form-group">
-														<div class="select-wrap one-third">
-															<div class="icon"><span class="ion-ios-arrow-down"></span>
-															</div>
-															<select name="" id="" class="form-control"
-																placeholder="Guest">
-																<option value="0">Guest</option>
-																<option value="1">1</option>
-																<option value="2">2</option>
-																<option value="3">3</option>
-																<option value="4">4</option>
-															</select>
-														</div>
-													</div>
-												</div>
-												<div class="col-md-6">
-													<div class="form-group">
-														<div class="select-wrap one-third">
-															<div class="icon"><span class="ion-ios-arrow-down"></span>
-															</div>
-															<select name="" id="" class="form-control"
-																placeholder="Children">
-																<option value="0">Children</option>
-																<option value="1">1</option>
-																<option value="2">2</option>
-																<option value="3">3</option>
-																<option value="4">4</option>
-															</select>
-														</div>
-													</div>
-												</div>
-												<div class="col-md-12">
-													<div class="form-group">
-														<input type="submit" value="Check Availability"
-															class="btn btn-primary py-3">
-													</div>
-												</div>
-											</div>
-										</div>
+										<form class="form">
+											{% csrf_token %}
+											{% bootstrap_form filter.form %}
+											{% buttons %}
+											<button type="submit" class="btn btn-primary py-3 w-100">Search</button>
+											{% endbuttons %}
+										</form>
 									</div>
 									<div class="col-md-12 hotel-single ftco-animate mb-5 mt-4">
 										<h4 class="mb-4">Review &amp; Ratings</h4>
@@ -208,14 +149,18 @@
 									<div class="col-md-12 hotel-single ftco-animate mb-5 mt-5">
 										<h4 class="mb-4">Related Hotels</h4>
 										<div class="row">
+
+											{% for property in related %}
 											<div class="col-md-4">
-												<div class="destination">
-													<a href="hotel-single.html" class="img img-2"
-														style="background-image: url(images/hotel-1.jpg);"></a>
+												<div class="card">
+													<img class="card-img-top" src="{{property.image.url}}"
+														alt="Card image cap">
+
 													<div class="text p-3">
 														<div class="d-flex">
 															<div class="one">
-																<h3><a href="hotel-single.html">Hotel, Italy</a></h3>
+																<h3><a href="hotel-single.html">{{property.name}}</a>
+																</h3>
 																<p class="rate">
 																	<i class="icon-star"></i>
 																	<i class="icon-star"></i>
@@ -225,85 +170,22 @@
 																	<span>8 Rating</span>
 																</p>
 															</div>
-															<div class="two">
+															<div class="two" style="margin-left:20%">
 																<span
-																	class="price per-price">$40<br><small>/night</small></span>
+																	class="price per-price">${{property.price}}<br><small>/night</small></span>
 															</div>
 														</div>
-														<p>Far far away, behind the word mountains, far from the
-															countries</p>
+														<p>{{property.description|safe|truncatewords:10}}</p>
 														<hr>
 														<p class="bottom-area d-flex">
-															<span><i class="icon-map-o"></i> Miami, Fl</span>
+															<span><i class="fa fa-map-marker"></i>
+																{{property.place}}</span>
 															<span class="ml-auto"><a href="#">Book Now</a></span>
 														</p>
 													</div>
 												</div>
 											</div>
-											<div class="col-md-4">
-												<div class="destination">
-													<a href="hotel-single.html" class="img img-2"
-														style="background-image: url(images/hotel-2.jpg);"></a>
-													<div class="text p-3">
-														<div class="d-flex">
-															<div class="one">
-																<h3><a href="hotel-single.html">Hotel, Italy</a></h3>
-																<p class="rate">
-																	<i class="icon-star"></i>
-																	<i class="icon-star"></i>
-																	<i class="icon-star"></i>
-																	<i class="icon-star"></i>
-																	<i class="icon-star-o"></i>
-																	<span>8 Rating</span>
-																</p>
-															</div>
-															<div class="two">
-																<span
-																	class="price per-price">$40<br><small>/night</small></span>
-															</div>
-														</div>
-														<p>Far far away, behind the word mountains, far from the
-															countries</p>
-														<hr>
-														<p class="bottom-area d-flex">
-															<span><i class="icon-map-o"></i> Miami, Fl</span>
-															<span class="ml-auto"><a href="#">Book Now</a></span>
-														</p>
-													</div>
-												</div>
-											</div>
-											<div class="col-md-4">
-												<div class="destination">
-													<a href="hotel-single.html" class="img img-2"
-														style="background-image: url(images/hotel-3.jpg);"></a>
-													<div class="text p-3">
-														<div class="d-flex">
-															<div class="one">
-																<h3><a href="hotel-single.html">Hotel, Italy</a></h3>
-																<p class="rate">
-																	<i class="icon-star"></i>
-																	<i class="icon-star"></i>
-																	<i class="icon-star"></i>
-																	<i class="icon-star"></i>
-																	<i class="icon-star-o"></i>
-																	<span>8 Rating</span>
-																</p>
-															</div>
-															<div class="two">
-																<span
-																	class="price per-price">$40<br><small>/night</small></span>
-															</div>
-														</div>
-														<p>Far far away, behind the word mountains, far from the
-															countries</p>
-														<hr>
-														<p class="bottom-area d-flex">
-															<span><i class="icon-map-o"></i> Miami, Fl</span>
-															<span class="ml-auto"><a href="#">Book Now</a></span>
-														</p>
-													</div>
-												</div>
-											</div>
+											{% endfor %}
 										</div>
 									</div>
 

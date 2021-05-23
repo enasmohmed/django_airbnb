@@ -8539,6 +8539,9 @@ div.cs-select span {
   color: #52565b;
 }
 
+#fh5co-hotel-section .hotel-content{
+    width: 16.3em;
+}
 #fh5co-hotel-section .hotel-content .hotel-grid {
   background-repeat: no-repeat;
   background-size: cover;
@@ -9259,6 +9262,43 @@ input[type="text"] {
 
 /* End Rating */
 
+.sidebar-wrap {
+    padding: 20px;
+    border: 1px solid #e6e6e6;
+    margin-bottom: 30px;
+}
+
+
+.form-group {
+    margin-bottom: 1rem;
+}
+.sidebar-wrap .range-slider {
+    width: 100%;
+    margin: auto;
+    margin-bottom: auto;
+    position: relative;
+    height: 3em;
+    margin-bottom: 30px;
+}
+
+.form-check {
+    position: relative;
+    display: block;
+    padding-left: 1.25rem;
+}
+.form-check-input {
+  position: absolute;
+  margin-top: 0.3rem;
+  margin-left: -1.25rem; }
+  .form-check-input:disabled ~ .form-check-label {
+    color: #6c757d; }
+
+.form-check-label {
+  margin-bottom: 0;
+  margin-left: 21px;
+  line-height: 0;
+}
+}
 
 /* Start Page Detail */
 

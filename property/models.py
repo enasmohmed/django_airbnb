@@ -69,13 +69,15 @@ COUNT = (
     (3 , 3),
     (4 , 4),
 )
+
+
 class PropertyBook(models.Model):
     user = models.ForeignKey(User, related_name='book_owner', on_delete=models.CASCADE)
     property = models.ForeignKey(Property, related_name='book_property', on_delete=models.CASCADE)
     date_from = models.DateField(default=timezone.now)
     date_to = models.DateField(default=timezone.now)
-    guest = models.CharField(max_length=2, choices=COUNT)
-    children = models.CharField(max_length=2, choices=COUNT)
+    guest = models.IntegerField(max_length=2, choices=COUNT)
+    children = models.IntegerField(max_length=2, choices=COUNT)
 
     def __str__(self):
         return str(self.property)
