@@ -27,11 +27,12 @@
             <div class="col-md-4">
                 <div class="blog-grid" style="background-image: url({{post.image.url}});">
                     <div class="date text-center">
-                        <span>New</span>
+                        <span><i class="fa fa-rss"></i> ({{forloop.counter}})</span>
+<!--						<small>New</small>-->
                     </div>
                 </div>
                 <div class="desc">
-                     <span class="tag">Tips, Travel</span>
+<!--                     <span class="tag">Tips, Travel</span>-->
                     <h3 class="mt-4"><a href="{{post.get_absolute_url}}">{{post.title}}</a></h3>
                     <div class="meta mt-5">
                         <div><a href="{{post.get_absolute_url}}">{{post.created_at|date:"F j, Y"}}</a>

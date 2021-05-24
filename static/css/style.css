@@ -9383,6 +9383,34 @@ input[type="text"] {
   font-style: italic; 
 }
 
+
+.block-21 .blog-img {
+  display: block;
+  height: 80px;
+  width: 80px; }
+
+.block-21 .text {
+  width: calc(100% - 100px); 
+}
+.block-21 .text .heading {
+  font-size: 18px;
+  font-weight: 300; 
+}
+.block-21 .text .heading a {
+  color: #000000;
+}
+.block-21 .text .heading a:hover, .block-21 .text .heading a:active, .block-21 .text .heading a:focus {
+  color: #f85959; 
+}
+.block-21 .text .meta > div {
+  display: inline-block;
+  font-size: 12px;
+  margin-right: 5px;
+}
+.block-21 .text .meta > div a {
+  color: gray; 
+}
+
 .hotel-img,
 .hero-wrap,
 .img,
