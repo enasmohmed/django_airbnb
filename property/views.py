@@ -36,6 +36,7 @@ class PropertyDetail(FormMixin, DetailView):
 
             return redirect('/')
 
+
             
         
 

@@ -11,7 +11,7 @@ class Property(models.Model):
     name = models.CharField(max_length=100)
     image = models.ImageField(upload_to='property/')
     price = models.IntegerField(default=0)
-    description = models.TextField(max_length=1000)
+    description = models.TextField(max_length=10000)
     place = models.ForeignKey('Place', related_name='property_place', on_delete=models.CASCADE)
     category = models.ForeignKey('Category', related_name='property_category', on_delete=models.CASCADE)
     created_at = models.DateTimeField(default=timezone.now)
@@ -47,6 +47,7 @@ class Place(models.Model):
 
 class Category(models.Model):
     name = models.CharField(max_length=40)
+    icon = models.CharField(max_length=30)
 
     def __str__(self):
         return self.name

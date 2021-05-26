@@ -4,7 +4,7 @@
 <head xmlns="http://www.w3.org/1999/html">
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Seven.Start &mdash; Hotel</title>
+    <title>{{myfooter.site_name}}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Free HTML5 Template by FREEHTML5.CO" />
     <meta name="keywords" content="free html5, free template, free bootstrap, html5, css3, mobile first, responsive" />
@@ -23,10 +23,20 @@
     <link rel="shortcut icon" href="favicon.ico">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- <link href='https://fonts.googleapis.com/css?family=Lato:400,100,100italic,300,300italic,400italic,700italic,900,700,900italic' rel='stylesheet' type='text/css'> -->
-
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
-   <!-- Stylesheets -->
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Chela+One&display=swap" rel="stylesheet">
+
+
+
+    <!-- FlatIcon -->
+    <link rel="stylesheet" href="{% static 'css/all.css' %}">
+
+
+
+    <!-- Stylesheets -->
     <!-- Dropdown Menu -->
     <link rel="stylesheet" href="{% static 'css/superfish.css' %}">
     <link rel="stylesheet" href="{% static 'css/bootstrap-datepicker.min.css' %}">
@@ -37,7 +47,7 @@
     <link rel="stylesheet" href="{% static 'css/icomoon.css' %}">
     <link rel="stylesheet" href="{% static 'css/flexslider.css' %}">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
-   
+
 
     <!-- Modernizr JS -->
     <script src="{% static 'js/modernizr-2.6.2.min.js' %}"></script>
@@ -55,40 +65,17 @@
                 <header id="fh5co-header-section">
                     <div class="container">
                         <div class="nav-header">
-                            <a href="#" class="js-fh5co-nav-toggle fh5co-nav-toggle"><i></i></a>
-                            <h1 id="fh5co-logo"><a href="index.html"><img src="/static/images/logo2.png" alt=""> </a>
+                            <a href="/" class="js-fh5co-nav-toggle fh5co-nav-toggle"><i></i></a>
+                            <h1 id="fh5co-logo"><a href="/"><i class="fa fa-h-square"></i> {{myfooter.site_name}}. </a>
                             </h1>
                             <nav id="fh5co-menu-wrap" role="navigation">
                                 <ul class="sf-menu" id="fh5co-primary-menu">
-                                    <li><a href="index.html">Home</a></li>
-                                    <li>
-                                        <a class="active" href="hotel.html" class="fh5co-sub-ddown">Hotel</a>
-                                        <ul class="fh5co-sub-menu">
-                                            <li><a href="#">Luxe Hotel</a></li>
-                                            <li><a href="#">Deluxe Hotel</a></li>
-                                            <li>
-                                                <a href="#" class="fh5co-sub-ddown">King Hotel</a>
-                                                <ul class="fh5co-sub-menu">
-                                                    <li><a href="http://freehtml5.co/preview/?item=build-free-html5-bootstrap-template"
-                                                            target="_blank">Build</a></li>
-                                                    <li><a href="http://freehtml5.co/preview/?item=work-free-html5-template-bootstrap"
-                                                            target="_blank">Work</a></li>
-                                                    <li><a href="http://freehtml5.co/preview/?item=light-free-html5-template-bootstrap"
-                                                            target="_blank">Light</a></li>
-                                                    <li><a href="http://freehtml5.co/preview/?item=relic-free-html5-template-using-bootstrap"
-                                                            target="_blank">Relic</a></li>
-                                                    <li><a href="http://freehtml5.co/preview/?item=display-free-html5-template-using-bootstrap"
-                                                            target="_blank">Display</a></li>
-                                                    <li><a href="http://freehtml5.co/preview/?item=sprint-free-html5-template-bootstrap"
-                                                            target="_blank">Sprint</a></li>
-                                                </ul>
-                                            </li>
-                                            <li><a href="#">Five Star Hotel</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="services.html">Services</a></li>
-                                    <li><a href="blog.html">Blog</a></li>
-                                    <li><a href="contact.html">Contact</a></li>
+                                    <li><a class="active" href="/">Home</a></li>
+                                    <li><a href="{% url 'property:property_list' %}" class="fh5co-sub-ddown">Properties</a></li>
+                                    <li><a href="{% url 'about:about' %}">About</a></li>
+                                    <li><a href="{% url 'blog:post_list' %}">Blog</a></li>
+                                    <li><a href="{% url 'home:contact_us' %}">Contact</a></li>
+                                    <li class="cta"><a href="contact.html"><span>Add listing</span></a></li>
                                 </ul>
                             </nav>
                         </div>
@@ -108,9 +95,11 @@
                     <div class="row">
                         <div class="col-md-3">
                             <div class="copyright">
-                                <p><small>&copy; 2016 Free HTML5 Template. <br> All Rights Reserved. <br>
-                                        Designed by <a href="http://freehtml5.co" target="_blank">FreeHTML5.co</a> <br>
-                                        Demo Images: <a href="http://unsplash.com/" target="_blank">Unsplash</a></small>
+                                <h3><i class="fa fa-h-square"></i> {{myfooter.site_name}}</h3>
+                                <p>{{myfooter.description}}</p>
+                                <p><small>&copy; 2021 {{myfooter.site_name}} <br> All Rights Reserved. <br>
+                                        Designed by <a href="https://enasmohmed.github.io/-CV/" target="_blank">Enas Mohamed</a> <br>
+                                        </small>
                                 </p>
                             </div>
                         </div>
@@ -136,15 +125,11 @@
                                         <li><a href="#">Gym</a></li>
                                     </ul>
                                 </div>
-                                <div class="col-md-6">
+                                <div class="col-md-6 block-23">
                                     <h3>Subscribe</h3>
-                                    <p>Sed cursus ut nibh in semper. Mauris varius et magna in fermentum. </p>
-                                    <form action="#" id="form-subscribe">
-                                        <div class="form-field">
-                                            <input type="email" placeholder="Email Address" id="email">
-                                            <input type="submit" id="submit" value="Send">
-                                        </div>
-                                    </form>
+                                    <p><i class="fa fa-map-marker"></i> {{myfooter.address}} </p>
+                                    <p><i class="fa fa-phone"></i> {{myfooter.phone}} </p>
+                                    <p><i class="fa fa-envelope"></i> {{myfooter.email}} </p>
                                 </div>
                             </div>
                         </div>
@@ -160,19 +145,21 @@
                         </div>
                     </div>
                 </div>
-            </footer>
-
         </div>
-        <!-- END fh5co-page -->
+        </footer>
+
+    </div>
+    <!-- END fh5co-page -->
 
     </div>
     <!-- END fh5co-wrapper -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 
 
+  <script defer src="{% static 'js/all.js' %}"></script> <!--load all styles -->
 
     <!-- Javascripts -->
     <script src="{% static 'js/jquery-2.1.4.min.js' %}"></script>
@@ -191,3 +178,4 @@
 </body>
 
 </html>
+
