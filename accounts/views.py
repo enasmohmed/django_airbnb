@@ -62,8 +62,13 @@ def profile_edit(request):
 
 
 def my_reservation(request):
-    user_reservation = PropertyBook.objects.filter(name=request.user)
+    user_reservation = PropertyBook.objects.filter(user=request.user)
     return render(request, 'profile/my_reservation.html', {'user_reservation': user_reservation})
+
+
+def my_listing(request):
+    property_list = Property.objects.filter(owner=request.user)
+    return render(request, 'profile/my_listing.html', {'property_list': property_list})
 
 
 def add_feedback(request, slug):

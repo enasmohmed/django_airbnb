@@ -9846,4 +9846,10 @@ input[type="text"] {
   border-color: #f85959; 
 }
 
+
+.ftco-section .book_room h4{
+    color: #ee5d25;
+    font-style: italic;
+    font-weight: bold;
+}
 /* End Nav */

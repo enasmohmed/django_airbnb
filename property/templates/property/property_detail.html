@@ -14,7 +14,6 @@
 						class="col-md-12 col-md-offset-0 col-sm-12 col-sm-offset-0 col-xs-12 col-xs-offset-0 text-center fh5co-table">
 						<div class="fh5co-intro fh5co-table-cell">
 							<h1 class="text-center">Choose Our Hotel</h1>
-							<p>Made with love by the fine folks at <a href="http://freehtml5.co">FreeHTML5.co</a></p>
 						</div>
 					</div>
 				</div>
@@ -67,6 +66,15 @@
 										</p>
 										<p>{{object.description|safe}}</p>
 									</div>
+									<div class="book_room">
+									{% if object.check_availability ==  'Availability' %}
+										<h4> Availability Today </h4>
+									{% else %}
+										<h4> The Room Is Being Booked , The Reservation {{object.check_availability}}</h4>
+										
+									{% endif %}
+									</div>	
+									
 									<div class="col-md-12 hotel-single ftco-animate mb-5 mt-4">
 										<h4 class="mb-5">Check Availability &amp; Booking</h4>
 										<form class="form" method="post">

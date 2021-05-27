@@ -7,6 +7,7 @@ from property.models import Property, PropertyImages, Place, Category, PropertyR
 
 class SomeModelAdmin(SummernoteModelAdmin):
     summernote_fields = '__all__'
+    list_display = ['name', 'price', 'get_avg_rating', 'check_availability']
 
 
 admin.site.register(Property, SomeModelAdmin)
@@ -14,4 +15,10 @@ admin.site.register(PropertyImages)
 admin.site.register(Place)
 admin.site.register(Category)
 admin.site.register(PropertyReview)
-admin.site.register(PropertyBook)
+
+
+class PropertyBookAdmin(admin.ModelAdmin):
+    list_display = ['property', 'now_reservation']
+    
+
+admin.site.register(PropertyBook, PropertyBookAdmin)

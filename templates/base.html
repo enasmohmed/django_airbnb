@@ -75,7 +75,14 @@
                                     <li><a href="{% url 'about:about' %}">About</a></li>
                                     <li><a href="{% url 'blog:post_list' %}">Blog</a></li>
                                     <li><a href="{% url 'home:contact_us' %}">Contact</a></li>
-                                    <li class="cta"><a href="contact.html"><span>Add listing</span></a></li>
+                                {% if request.user.is_authenticated %}
+                                    <li class="cta"><a href="{% url 'accounts:profile' %}"><span>Profile</span></a></li>
+                                    <li class="cta"><a href=""><span>Add Listing</span></a></li>
+                                    <li class="cta"><a href="{% url 'logout' %}"><span>Logout</span></a></li>
+                                {% else %}
+                                    <li class="cta"><a href="{% url 'login' %}"><span>Login</span></a></li>
+                                    <li class="cta"><a href="{% url 'accounts:signup' %}"><span>Signup</span></a></li>
+                                {% endif %}
                                 </ul>
                             </nav>
                         </div>
@@ -98,8 +105,9 @@
                                 <h3><i class="fa fa-h-square"></i> {{myfooter.site_name}}</h3>
                                 <p>{{myfooter.description}}</p>
                                 <p><small>&copy; 2021 {{myfooter.site_name}} <br> All Rights Reserved. <br>
-                                        Designed by <a href="https://enasmohmed.github.io/-CV/" target="_blank">Enas Mohamed</a> <br>
-                                        </small>
+                                        Designed by <a href="https://enasmohmed.github.io/-CV/" target="_blank">Enas
+                                            Mohamed</a> <br>
+                                    </small>
                                 </p>
                             </div>
                         </div>
@@ -159,7 +167,8 @@
 
 
 
-  <script defer src="{% static 'js/all.js' %}"></script> <!--load all styles -->
+    <script defer src="{% static 'js/all.js' %}"></script>
+    <!--load all styles -->
 
     <!-- Javascripts -->
     <script src="{% static 'js/jquery-2.1.4.min.js' %}"></script>
@@ -178,4 +187,3 @@
 </body>
 
 </html>
-

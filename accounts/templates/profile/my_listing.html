@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
-{% load bootstrap4 %}
 {% block body %}
+
 <div id="fh5co-wrapper">
 	<div id="fh5co-page">
 		<!-- end:fh5co-header -->
@@ -13,42 +13,27 @@
 					<div
 						class="col-md-12 col-md-offset-0 col-sm-12 col-sm-offset-0 col-xs-12 col-xs-offset-0 text-center fh5co-table">
 						<div class="fh5co-intro fh5co-table-cell">
-							<h1 class="text-center">Choose Our Hotel</h1>
-							<p>Made with love by the fine folks at <a href="http://freehtml5.co">FreeHTML5.co</a></p>
+							<h1 class="text-center">My Listing</h1>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 
-
 		<div id="fh5co-hotel-section">
 			<div class="container">
 				<div class="row">
-					<div class="col-lg-3 sidebar p-2">
-						<div class="sidebar-wrap bg-light ftco-animate">
-							<h3 class="heading mb-4">Find City</h3>
-							<form class="form">
-								{% csrf_token %}
-								{% bootstrap_form filter.form %}
-								{% buttons %}
-								<button type="submit" class="btn btn-primary py-3 w-100">Check Availability</button>
-								{% endbuttons %}
-							</form>
-						</div>
-
-					</div>
-                    <div class="col-lg-9 mt-2">
+                    <div class="col-md-12 mt-2">
 						<div class="row">
-							{% for property in object_list %}
+							{% for property in property_list %}
 							<div class="col-md-4">
-								<div class="hotel-content" style="width: 109%;">
+								<div class="hotel-content" style="width: 100%;">
 									<div class="hotel-grid" style="background-image: url({{property.image.url}});">
 										<div class="price"><small>For as low as</small><span>${{property.price}}/night</span>
 										</div>
 										<a class="book-now text-center" href="{{property.get_absolute_url}}"><i
-												class="ti-calendar"></i> Book
-											Now</a>
+												class="fa fa-eye"></i> View
+											Room</a>
 									</div>
 									<div class="desc">
 										<h3><a href="{{property.get_absolute_url}}">{{property.name}}</a></h3>
@@ -60,8 +45,6 @@
 											<span class="fa fa-star"></span><hr/>
 											<!--                  <span>8 Rating</span>-->
 										</div>
-										<!-- <p>{{property.description|safe|truncatewords:3}}</p>
-										<p><i class="fa fa-clock-o"></i> {{property.created_at}}</p> -->
 										<span><i class="fa fa-map-marker"></i> {{property.place}}</span>
 									</div>
 								</div>
@@ -115,4 +98,5 @@
 		<!-- End Pagination -->
 	</div>
 </div>
+
 {% endblock body %}
