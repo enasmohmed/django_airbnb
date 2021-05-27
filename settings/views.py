@@ -14,11 +14,11 @@ def home(request):
     restaurant_list = Property.objects.filter(category__name='Restaurant')
     hotels_list = Property.objects.filter(category__name='Hotels')[:1]
     hotels_cable = Property.objects.filter(category__name='Hotels')[1:3]
-    places_list = Property.objects.filter(category__name='	Places')
+    places_list = Place.objects.all().annotate(property_count=Count('property_place'))[:3]
     recent_posts = Post.objects.all()[:3]
 
     users_count = User.objects.all().count()
-    places_count = Property.objects.filter(category__name='	Places').count()
+    places_count = Place.objects.all().annotate(property_count=Count('property_place')).count()
     restaurant_count = Property.objects.filter(category__name='Restaurant').count()
     hotels_count = Property.objects.filter(category__name='Hotels').count()
 

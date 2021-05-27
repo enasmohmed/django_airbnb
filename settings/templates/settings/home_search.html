@@ -24,11 +24,11 @@
 		<div id="fh5co-hotel-section">
 			<div class="container">
 				<div class="row">
-                    <div class="col-lg-9 mt-2">
+                    <div class="col-md-12 mt-2">
 						<div class="row">
 							{% for property in property_list %}
-                                <div class="col-md-4">
-                                    <div class="hotel-content" style="width: 109%;">
+                                <div class="col">
+                                    <div class="hotel-content" style="width: 100%;">
                                         <div class="hotel-grid" style="background-image: url({{property.image.url}});">
                                             <div class="price"><small>For as low as</small><span>${{property.price}}/night</span>
                                             </div>

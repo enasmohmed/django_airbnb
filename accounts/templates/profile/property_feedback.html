@@ -1,0 +1,123 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load bootstrap4 %}
+{% block body %}
+
+<div class="hero-wrap js-fullheight" style="background-image: url({% static 'images/bg_5.jpg' %});">
+	<div class="overlay"></div>
+	<div class="container">
+		<div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center"
+			data-scrollax-parent="true">
+			<div class="col-md-9 ftco-animate text-center" data-scrollax=" properties: { translateY: '70%' }">
+				<p class="breadcrumbs" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><span
+						class="mr-2"><a href="index.html">Home</a></span> <span class="mr-2"><a
+							href="hotel.html">Hotel</a></span> <span>Hotel Single</span></p>
+				<h1 class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Hotels Details
+				</h1>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<section class="ftco-section ftco-degree-bg">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-10 mx-auto">
+				<div class="row">
+					<div class="col-md-12 ftco-animate">
+						<div class="single-slider owl-carousel">
+
+							{% for property_image in property_images %}
+							<div class="item">
+								<div class="hotel-img" style="background-image: url({{property_image.image.url}});">
+								</div>
+							</div>
+							{% endfor %}
+						</div>
+					</div>
+					<div class="col-md-12 hotel-single mt-4 mb-5 ftco-animate">
+						<span>Our Best hotels &amp; Rooms</span>
+						<h2>{{property}}</h2>
+						<p class="rate mb-5">
+							<span class="loc"><a href="#"><i class="icon-map"></i> {{property.place}}</a></span>
+							<span class="star">
+								<i class="icon-star"></i>
+								<i class="icon-star"></i>
+								<i class="icon-star"></i>
+								<i class="icon-star"></i>
+								<i class="icon-star-o"></i>
+								{{review_count}} Rating</span>
+						</p>
+						<p> {{property.description|safe}}</p>
+
+					</div>
+
+
+					<div class="col-md-12 hotel-single ftco-animate mb-5 mt-4">
+						<h4 class="mb-5">Add Your &amp; Feedback</h4>
+						<form method=POST>
+						 {% csrf_token %}
+						     {% bootstrap_form form %}
+							{% buttons %}
+								<button type="submit" class="btn btn-primary py-3">Add Review</button>
+							{% endbuttons %}
+						</form>
+					</div>
+					<div class="col-md-12 hotel-single ftco-animate mb-5 mt-4">
+						<h4 class="mb-4">Review &amp; Ratings</h4>
+						<div class="row">
+							<div class="col-md-6">
+								<form method="post" class="star-rating">
+									<div class="form-check">
+										<input type="checkbox" class="form-check-input" id="exampleCheck1">
+										<label class="form-check-label" for="exampleCheck1">
+											<p class="rate"><span><i class="icon-star"></i><i class="icon-star"></i><i
+														class="icon-star"></i><i class="icon-star"></i><i
+														class="icon-star"></i> 100 Ratings</span></p>
+										</label>
+									</div>
+									<div class="form-check">
+										<input type="checkbox" class="form-check-input" id="exampleCheck1">
+										<label class="form-check-label" for="exampleCheck1">
+											<p class="rate"><span><i class="icon-star"></i><i class="icon-star"></i><i
+														class="icon-star"></i><i class="icon-star"></i><i
+														class="icon-star-o"></i> 30 Ratings</span></p>
+										</label>
+									</div>
+									<div class="form-check">
+										<input type="checkbox" class="form-check-input" id="exampleCheck1">
+										<label class="form-check-label" for="exampleCheck1">
+											<p class="rate"><span><i class="icon-star"></i><i class="icon-star"></i><i
+														class="icon-star"></i><i class="icon-star-o"></i><i
+														class="icon-star-o"></i> 5 Ratings</span></p>
+										</label>
+									</div>
+									<div class="form-check">
+										<input type="checkbox" class="form-check-input" id="exampleCheck1">
+										<label class="form-check-label" for="exampleCheck1">
+											<p class="rate"><span><i class="icon-star"></i><i class="icon-star"></i><i
+														class="icon-star-o"></i><i class="icon-star-o"></i><i
+														class="icon-star-o"></i> 0 Ratings</span></p>
+										</label>
+									</div>
+									<div class="form-check">
+										<input type="checkbox" class="form-check-input" id="exampleCheck1">
+										<label class="form-check-label" for="exampleCheck1">
+											<p class="rate"><span><i class="icon-star"></i><i class="icon-star-o"></i><i
+														class="icon-star-o"></i><i class="icon-star-o"></i><i
+														class="icon-star-o"></i> 0 Ratings</span></p>
+										</label>
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div> <!-- .col-md-8 -->
+		</div>
+	</div>
+</section> <!-- .section -->
+
+
+{% endblock body %}
