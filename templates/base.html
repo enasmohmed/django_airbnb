@@ -77,7 +77,7 @@
                                     <li><a href="{% url 'home:contact_us' %}">Contact</a></li>
                                 {% if request.user.is_authenticated %}
                                     <li class="cta"><a href="{% url 'accounts:profile' %}"><span>Profile</span></a></li>
-                                    <li class="cta"><a href=""><span>Add Listing</span></a></li>
+<!--                                    <li class="cta"><a href="{% url 'accounts:listing' %}"><span>Add Listing</span></a></li>-->
                                     <li class="cta"><a href="{% url 'logout' %}"><span>Logout</span></a></li>
                                 {% else %}
                                     <li class="cta"><a href="{% url 'login' %}"><span>Login</span></a></li>
