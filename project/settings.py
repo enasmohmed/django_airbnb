@@ -31,6 +31,7 @@ ALLOWED_HOSTS = ['hoteldj.herokuapp.com', '127.0.0.1']
 # Application definition
 
 INSTALLED_APPS = [
+    'accounts',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -39,7 +40,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     # my apps
-    'accounts',
+    'django.contrib.sites',
+    'allauth',
+    'allauth.account',
     'property',
     'blog',
     'about',
@@ -48,7 +51,16 @@ INSTALLED_APPS = [
     'django_summernote',
     'bootstrap4',
     'django_filters',
+
+
+    # api rest framework
+    'rest_framework',
+    'rest_framework.authtoken',
+    'dj_rest_auth',
+    'dj_rest_auth.registration',
 ]
+
+SITE_ID = 1
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -146,3 +158,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
 
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+LOGOUT_REDIRECT_URL = '/'
