@@ -18,6 +18,9 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 
+# https://documenter.getpostman.com/view/7358103/TzXzDwmu ## api docs
+
+
 urlpatterns = [
     path('accounts/', include('django.contrib.auth.urls')),
     path('accounts/', include('accounts.urls', namespace='accounts')),
@@ -31,7 +34,9 @@ urlpatterns = [
     # api
     path('api-auth/', include('rest_framework.urls')),
     path('rest-auth/', include('dj_rest_auth.urls')),
-    path('rest-auth/registration/', include('dj_rest_auth.registration.urls'))
+    path('rest-auth/registration/', include('dj_rest_auth.registration.urls')),
+
+    # api docs
 ]
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

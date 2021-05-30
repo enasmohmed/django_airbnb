@@ -4,17 +4,18 @@ from django.shortcuts import render
 
 # Create your views here.
 from blog.models import Post
-from property.models import Place, Property, Category
+from property.models import Place, Property, Category, PropertyRoomFacilities
 
 
 def home(request):
     places = Place.objects.all().annotate(property_count=Count('property_place'))
     category = Category.objects.all()
+    hotel_facilities = PropertyRoomFacilities.objects.all()
 
     restaurant_list = Property.objects.filter(category__name='Restaurant')
     hotels_list = Property.objects.filter(category__name='Hotels')[:1]
     hotels_cable = Property.objects.filter(category__name='Hotels')[1:3]
-    places_list = Place.objects.all().annotate(property_count=Count('property_place'))[:3]
+    places_list = Place.objects.all().annotate(property_count=Count('property_place'))[:4]
     recent_posts = Post.objects.all()[:3]
 
     users_count = User.objects.all().count()
@@ -33,7 +34,8 @@ def home(request):
         'users_count': users_count,
         'places_count': places_count,
         'restaurant_count': restaurant_count,
-        'hotels_count': hotels_count
+        'hotels_count': hotels_count,
+        'hotel_facilities': hotel_facilities,
     })
 
 

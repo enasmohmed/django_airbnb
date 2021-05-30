@@ -116,3 +116,22 @@ class PropertyBook(models.Model):
         return now > self.date_from and now < self.date_to
 
     now_reservation.boolean = True
+
+
+OPTIONS_CHOICES = (
+    ("World Class", " World Class"),
+    ("sweetened", " sweetened"),
+)
+
+
+class PropertyRoomFacilities(models.Model):
+    name = models.CharField(max_length=100)
+    icon = models.CharField(max_length=30)
+    image = models.ImageField(upload_to='property_room_fac_images/')
+    description = models.TextField(max_length=10000)
+    option_service = models.CharField(max_length=20, choices=OPTIONS_CHOICES)
+    service_hours_date_from = models.TimeField(default=timezone.now)
+    service_hours_date_to = models.TimeField(default=timezone.now)
+
+    def __str__(self):
+        return self.name
