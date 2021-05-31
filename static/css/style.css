@@ -7671,7 +7671,7 @@ figure {
 .sf-menu ul {
   box-shadow: none;
   border: transparent;
-  min-width: 12em;
+  min-width: 8em;
   *width: 12em;
 }
 
@@ -9943,7 +9943,7 @@ input[type="text"] {
 
 /* Start Nav */
 
-.sf-menu .cta a{
+.sf-menu .cta .bord{
   color: #fff;
   border: 1px solid rgba(255, 255, 255, 0.4);
   padding-top: .5rem !important;

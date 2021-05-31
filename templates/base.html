@@ -1,4 +1,5 @@
 {% load static %}
+{% load i18n %}
 <!DOCTYPE html>
 
 <head xmlns="http://www.w3.org/1999/html">
@@ -69,20 +70,39 @@
                             </h1>
                             <nav id="fh5co-menu-wrap" role="navigation">
                                 <ul class="sf-menu" id="fh5co-primary-menu">
-                                    <li><a class="active" href="/">Home</a></li>
-                                    <li><a href="{% url 'property:property_list' %}" class="fh5co-sub-ddown">Properties</a></li>
-                                    <li><a href="{% url 'about:about' %}">About</a></li>
-                                    <li><a href="{% url 'blog:post_list' %}">Blog</a></li>
-                                    <li><a href="{% url 'home:contact_us' %}">Contact</a></li>
-                                {% if request.user.is_authenticated %}
-                                    <li class="cta"><a href="{% url 'accounts:profile' %}"><span>Profile</span></a></li>
-                                    <li class="cta"><a href="{% url 'property:property_new' %}"><span>Add Listing</span></a></li>
-                                    <li class="cta"><a href="{% url 'logout' %}"><span>Logout</span></a></li>
-                                {% else %}
-                                    <li class="cta"><a href="{% url 'login' %}"><span>Login</span></a></li>
-                                    <li class="cta"><a href="{% url 'accounts:signup' %}"><span>Signup</span></a></li>
-                                {% endif %}
+                                    <li><a class="active" href="/">{% translate "Home" %}</a></li>
+                                    <li><a href="{% url 'property:property_list' %}" class="fh5co-sub-ddown">{% translate "Properties" %}</a></li>
+                                    <li><a href="{% url 'about:about' %}">{% translate "About" %}</a></li>
+                                    <li><a href="{% url 'blog:post_list' %}">{% translate "Blog" %}</a></li>
+                                    <li><a href="{% url 'home:contact_us' %}">{% translate "Contact" %}</a></li>
+                                    {% if request.user.is_authenticated %}
+                                    <li class="cta"><a class="fh5co-sub-ddown bord" href="{% url 'accounts:profile' %}"><span>Profile</span></a>
+                                        <ul class="fh5co-sub-menu">
+                                            <li><a href="{% url 'property:property_new' %}" target="_blank">Add Listing</a></li>
+                                            <li><a href="{% url 'logout' %}" target="_blank">Logout</a></li>
+                                        </ul>
+                                    </li>
+                                    {% else %}
+                                    <li class="cta"><a  class="bord" href="{% url 'login' %}"><span>Login</span></a></li>
+                                    <li class="cta"><a class="bord" href="{% url 'accounts:signup' %}"><span>Signup</span></a></li>
+                                    {% endif %}
+                                   <form action="{% url 'set_language' %}" method="post">{% csrf_token %}
+                                    <input name="next" type="hidden" value="{{ redirect_to }}">
+                                    <select name="language">
+                                        {% get_current_language as LANGUAGE_CODE %}
+                                        {% get_available_languages as LANGUAGES %}
+                                        {% get_language_info_list for LANGUAGES as languages %}
+                                        {% for language in languages %}
+                                        <option value="{{ language.code }}" {% if language.code == LANGUAGE_CODE %}
+                                            selected{% endif %}>
+                                            {{ language.name_local }} ({{ language.code }})
+                                        </option>
+                                        {% endfor %}
+                                    </select>
+                                    <input type="submit" value="Go">
+                                </form>
                                 </ul>
+
                             </nav>
                         </div>
                     </div>

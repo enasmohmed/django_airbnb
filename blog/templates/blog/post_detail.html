@@ -2,21 +2,20 @@
 {% load static %}
 {% block body %}
 
-<div class="hero-wrap js-fullheight" style="background-image: url({% static 'images/slider1.jpg' %});">
-  <div class="overlay"></div>
-  <div class="container">
-    <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center"
-      data-scrollax-parent="true">
-      <div class="col-md-9 ftco-animate text-center" data-scrollax=" properties: { translateY: '70%' }">
-        <p class="breadcrumbs" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><span class="mr-2"><a
-              href="index.html">Home</a></span> <span class="mr-2"><a href="blog.html">Blog</a></span> <span>Blog
-            Single</span></p>
-        <h1 class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Tips &amp; Articles</h1>
-      </div>
+<div class="fh5co-parallax" style="background-image: url({% static 'images/slider1.jpg' %});"
+    data-stellar-background-ratio="0.5">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row">
+            <div
+                class="col-md-12 col-md-offset-0 col-sm-12 col-sm-offset-0 col-xs-12 col-xs-offset-0 text-center fh5co-table">
+                <div class="fh5co-intro fh5co-table-cell">
+                    <h1 class="text-center">Post Detail</h1>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
 </div>
-
 
 <section class="ftco-section ftco-degree-bg">
   <div class="container">
@@ -72,7 +71,7 @@
             <h3>Categories</h3>
 
             {% for category in categories %}
-            <li><a href="{% url 'blog:post_by_category' category %}">{{category}} <span>{{category.post_count}}</span></a></li>
+            <li><a href="{% url 'blog:post_by_category' category.slug %}">{{category.name}} <span>{{category.post_count}}</span></a></li>
             {% endfor %}
 
 
