@@ -9260,7 +9260,9 @@ input[type="text"] {
   color: orange;
 }
 
-
+.hotel-single .rate .checked{
+   color: orange;
+}
 /* End Rating */
 
 .sidebar-wrap {
@@ -9497,6 +9499,126 @@ input[type="text"] {
 /* End  Settings Footer */
 
 /* Start Page Detail */
+
+.ftco-section .booking {
+    font-size: 16px;
+    float: right;
+    border: 2px solid #ddd;
+    padding: 6px;
+    border-radius: 10px;
+    background: #c3b8b8a8;
+    font-weight: bold;
+}
+
+.hotel-single .star i {
+  color: #f85959;
+}
+.ftco-section .destination {
+  display: block;
+  width: 100%;
+  margin-bottom: 30px; 
+}
+@media (max-width: 991.98px) {
+  .ftco-section .destination {
+    margin-bottom: 30px; } 
+}
+.ftco-section .destination .img {
+  display: block;
+  height: 300px; 
+}
+.ftco-section .destination .img-2 {
+  height: 200px; 
+}
+.ftco-section .destination .icon {
+  width: 60px;
+  height: 60px;
+  background: #fff;
+  opacity: 0;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  border-radius: 50%;
+  -moz-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  -webkit-transition: all 0.3s ease;
+  -ms-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+.ftco-section .destination .icon span {
+  color: #000000; 
+}
+.ftco-section .destination:hover .icon {
+  opacity: 1; 
+}
+.ftco-section .destination .text {
+  border: 1px solid #e6e6e6;
+  border-top: 1px solid transparent;
+  background: #fff; 
+}
+.ftco-section .destination .text h3 {
+  font-size: 18px; 
+}
+.ftco-section .destination .text h3 a {
+  color: #000000; 
+}
+.ftco-section .destination .text span.listing {
+  font-size: 14px; 
+}
+.ftco-section .destination .text .rate i {
+  font-size: 10px;
+  color: #f85959; 
+}
+.ftco-section .destination .text .rate span {
+  padding-left: 5px;
+  font-size: 10px; 
+}
+.ftco-section .destination .text .one {
+  width: calc(100% - 70px); 
+}
+.ftco-section .destination .text .two {
+  width: 70px;
+  text-align: right; 
+}
+.ftco-section .destination .text .two .price {
+  font-weight: 400;
+  font-size: 18px;
+  color: #2f89fc; 
+}
+.ftco-section .destination .text .two .per-price {
+  font-size: 20px;
+  line-height: 1.4; 
+}
+.ftco-section .destination .text .two .per-price small {
+  font-size: 12px; 
+}
+.ftco-section .destination .text .days span {
+  font-size: 13px;
+  color: black; 
+}
+.ftco-section .destination .text .bottom-area {
+  margin-bottom: 0; 
+}
+.ftco-section .destination .text .bottom-area span {
+  font-size: 14px; 
+}
+@media (min-width: 768px) {
+  .ftco-section .destination .text .bottom-area span:last-child {
+    margin-left: 5px; 
+  } 
+}
+.ftco-section .destination .text .bottom-area span:last-child a {
+  background: #8bc34a;
+  color: #fff;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  border-radius: 4px;
+  padding: 3px 5px; 
+}
+.ftco-section .destination .text .bottom-area span:last-child a:hover {
+  background:#8bc34a;
+  color: #fff; 
+}
 
 
 /* End Page Detail */

@@ -32,7 +32,7 @@
 									<div class="hotel-grid" style="background-image: url({{property.property.image.url}});">
 										<div class="price"><small>For as low as</small><span>${{property.property.price}}/night</span>
 										</div>
-										<a class="book-now text-center" href="{{property.get_absolute_url}}"><i
+										<a class="book-now text-center" href="{% url 'accounts:add_feedback' property.property.slug %}"><i
 												class="fa fa-comment"></i> Add
 											Review</a>
 									</div>
@@ -43,11 +43,10 @@
 											<span class="fa fa-star checked"></span>
 											<span class="fa fa-star checked"></span>
 											<span class="fa fa-star"></span>
-											<span class="fa fa-star"></span><hr/>
-											<!--                  <span>8 Rating</span>-->
+											<span class="fa fa-star"></span>
+											<span>8 Rating</span><hr/>
 										</div>
 										<span><i class="fa fa-map-marker"></i> {{property.property.place}}</span>
-										<!-- <span class="ml-auto"><a href="{% url 'accounts:add_feedback' property.property.slug %}">Write Your Feedback</a></span> -->
 									</div>
 								</div>
 							</div>

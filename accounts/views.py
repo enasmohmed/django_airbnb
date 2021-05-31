@@ -80,6 +80,7 @@ def add_feedback(request, slug):
             form = PropertyReviewForm(request.POST, instance=user_feedback)
             if form.is_valid():
                 form.save()
+                return redirect('/')
 
         else:
             form = PropertyReviewForm(instance=user_feedback)

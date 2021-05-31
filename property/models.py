@@ -83,19 +83,27 @@ class Category(models.Model):
 class PropertyReview(models.Model):
     author = models.ForeignKey(User, related_name='review_author', on_delete=models.CASCADE)
     property = models.ForeignKey(Property, related_name='review_property', on_delete=models.CASCADE)
-    rate = models.IntegerField(default=0)
     feedback = models.TextField(max_length=2000)
     created_at = models.DateTimeField(default=timezone.now)
+    rate = models.IntegerField(choices=[
+        (1, 1),
+        (2, 2),
+        (3, 3),
+        (4, 4),
+        (5, 5),
+    ])
+
+
 
     def __str__(self):
         return str(self.property)
 
 
 COUNT = (
-    (1 , 1),
-    (2 , 2),
-    (3 , 3),
-    (4 , 4),
+    (1, 1),
+    (2, 2),
+    (3, 3),
+    (4, 4),
 )
 
 
