@@ -16,6 +16,6 @@ class CategoryAdmin(TofAdmin):
     inlines = (TranslationTabularInline, )
 
 
-admin.site.register(Post, SomeModelAdmin)
+admin.site.register(Post,SomeModelAdmin)
 
 admin.site.register(Category, CategoryAdmin)

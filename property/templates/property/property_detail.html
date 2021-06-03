@@ -31,7 +31,10 @@
 					<div class="carousel-inner">
 						{% for image in property_images %}
 						<div class="carousel-item {% if forloop.first %}active{% endif %}">
-							<img class="d-block w-100" src="{{image.image.url}}" alt="First slide">
+							<img class="d-block mx-auto" src="{{image.image.url}}" alt="First slide" style="max-width: 60%;
+										padding: 40px 0;
+										overflow: hidden;
+										position: relative;">
 						</div>
 						{% endfor %}
 					</div>
@@ -81,7 +84,8 @@
 											{% csrf_token %}
 											{% bootstrap_form form %}
 											{% buttons %}
-											<button type="submit" class="btn btn-primary py-3 w-100">Check Availability</button>
+											<button type="submit" class="btn btn-primary py-3 w-100">Check
+												Availability</button>
 											{% endbuttons %}
 										</form>
 									</div>
@@ -95,12 +99,12 @@
 															id="exampleCheck1">
 														<label class="form-check-label" for="exampleCheck1">
 															<p class="rate"><span>
-																<i class="fa fa-star checked"></i>
-																<i class="fa fa-star checked"></i>
-																<i class="fa fa-star checked"></i>
-																<i class="fa fa-star"></i>
-																<i class="fa fa-star"></i>
-																100 Ratings</span>
+																	<i class="fa fa-star checked"></i>
+																	<i class="fa fa-star checked"></i>
+																	<i class="fa fa-star checked"></i>
+																	<i class="fa fa-star"></i>
+																	<i class="fa fa-star"></i>
+																	100 Ratings</span>
 															</p>
 														</label>
 													</div>
@@ -149,35 +153,35 @@
 											{% endfor %}
 										</div>
 									</div>
-									<div class="col-md-12 hotel-single ftco-animate mb-5 mt-5">
-										<h4 class="mb-4">Property Feedback</h4>
-										<div class="row">
+									<!--									<div class="col-md-12 hotel-single ftco-animate mb-5 mt-5">-->
+									<!--										<h4 class="mb-4">Property Feedback</h4>-->
+									<!--										<div class="row">-->
 
-											{% for review in property.property_review.all %}
-											<div class="col-md-4">
-												<div class="destination">
-													<div class="text p-3">
-														<div class="d-flex">
-															<div class="one">
-																<h3><a href="">{{review.author}}</a></h3>
-																<p class="rate">
-																	{% with ''|center:review.rating as range %}
-																	{% for _ in range %}
-																	<i class="fa fa-star checked"></i>
-																	{% endfor %}
-																	{% endwith %}
+									<!--											{% for review in property.property_review.all %}-->
+									<!--											<div class="col-md-4">-->
+									<!--												<div class="destination">-->
+									<!--													<div class="text p-3">-->
+									<!--														<div class="d-flex">-->
+									<!--															<div class="one">-->
+									<!--																<h3><a href="">{{review.author}}</a></h3>-->
+									<!--																<p class="rate">-->
+									<!--																	{% with ''|center:review.rating as range %}-->
+									<!--																	{% for _ in range %}-->
+									<!--																	<i class="fa fa-star checked"></i>-->
+									<!--																	{% endfor %}-->
+									<!--																	{% endwith %}-->
 
-																</p>
-															</div>
-														</div>
-														<p>{{review.feedback}}</p>
+									<!--																</p>-->
+									<!--															</div>-->
+									<!--														</div>-->
+									<!--														<p>{{review.feedback}}</p>-->
 
-													</div>
-												</div>
-											</div>
-											{% endfor %}
-										</div>
-									</div>
+									<!--													</div>-->
+									<!--												</div>-->
+									<!--											</div>-->
+									<!--											{% endfor %}-->
+									<!--										</div>-->
+									<!--									</div>-->
 
 								</div>
 
@@ -187,7 +191,7 @@
 			</div>
 			</section> <!-- .section -->
 		</div>
+
 	</div>
-</div>
 </div>
 {% endblock body %}

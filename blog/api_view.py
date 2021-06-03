@@ -8,7 +8,7 @@ from rest_framework.permissions import IsAuthenticated
 
 
 @api_view(['GET'])
-@permission_classes([IsAuthenticated])
+# @permission_classes([IsAuthenticated])
 def post_list_api(request):
     all_posts = Post.objects.all()
     data = PostSerializer(all_posts, many=True).data
@@ -16,7 +16,7 @@ def post_list_api(request):
 
 
 @api_view(['GET'])
-@permission_classes([IsAuthenticated])
+# @permission_classes([IsAuthenticated])
 def post_detail_api(request, id):
     post = get_object_or_404(Post, id=id)
     data = PostSerializer(post).data

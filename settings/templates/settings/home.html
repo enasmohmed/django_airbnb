@@ -76,8 +76,7 @@
 
                     {% for category in category %}
                     <span class="d-flex justify-content-md-center align-items-md-center"><a
-                            href="{% url 'home:category_filter' category %}"><i class="{{category.icon}}"></i>
-                            {{category.name}}</a></span>
+                            href="{% url 'home:category_filter' category.id %}"><i class="{{category.icon}}"></i> {{category.name}}</a></span>
                     {% endfor %}
                 </p>
             </div>
@@ -219,9 +218,7 @@
                 <div class="desc">
                     <h3><a href="{{hotel.get_absolute_url}}">{{hotel.name}}</a></h3>
                     <p>{{hotel.description|safe}} </p>
-                    <p><a href="{{hotel.get_absolute_url}}" class="btn btn-primary btn-luxe-primary">Book Now <i
-                                class="ti-angle-right"></i></a>
-                    </p>
+                    <p><a href="{{hotel.get_absolute_url}}" class="btn btn-primary btn-luxe-primary">Book Now <i class="ti-angle-right"></i></a></p>
                 </div>
             </div>
             {% endfor %}
@@ -236,8 +233,7 @@
                     <div class="desc">
                         <h3><a href="{{hotel.get_absolute_url}}">{{hotel.name}}</a></h3>
                         <p>{{hotel.description|safe}} </p>
-                        <p><a href="{{hotel.get_absolute_url}}" class="btn btn-primary btn-luxe-primary">Book Now <i
-                                    class="ti-angle-right"></i></a></p>
+                        <p><a href="{{hotel.get_absolute_url}}" class="btn btn-primary btn-luxe-primary">Book Now <i class="ti-angle-right"></i></a></p>
                     </div>
                 </div>
                 {% endfor %}

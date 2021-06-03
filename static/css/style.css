@@ -8220,7 +8220,7 @@ div.cs-select span {
 }
 
 .fh5co-counters {
-  margin-top: -4%;
+  margin-top: -2%;
   padding: 3em 0;
   background-size: cover;
   background-attachment: fixed;
@@ -9940,7 +9940,6 @@ input[type="text"] {
 }
 
 /* End FAQ & About Page */
-
 /* Start Nav */
 
 .sf-menu .cta .bord{
@@ -9956,13 +9955,13 @@ input[type="text"] {
   -ms-border-radius: 30px;
   border-radius: 30px;
 }
-.sf-menu .cta a span {
+.sf-menu .cta .bord span {
   display: inline-block;
-  color: #fff; 
+  color: #fff;
 }
-.sf-menu .cta a:hover {
+.sf-menu .cta .bord:hover {
   background: #f85959;
-  border: 1px solid #f85959; 
+  border: 1px solid #f85959;
 }
 .sf-menu .cta.cta-colored span {
   border-color: #f85959; 
@@ -9974,6 +9973,27 @@ input[type="text"] {
     font-style: italic;
     font-weight: bold;
 }
+
+.sf-menu .form-lang{
+    margin-top: 24px;
+    margin-left: 9px;
+}
+
+.sf-menu .form-lang > select, .input-go{
+    padding: 6px;
+    background-color: #000;
+    color: #fff;
+    font-size: 14px;
+    border-radius: 12px;
+    border: none;
+    font-weight: bold;
+    border: 1px solid #4f6058;
+}
+
+.sf-menu .form-lang .input-go{
+    width: 37%;
+    padding: 3px;
+}
 /* End Nav */
 
 
@@ -9981,3 +10001,7 @@ input[type="text"] {
 
 
 /* End Profile Page */
+
+/* Start Slider Page Details */
+
+/* End Slider Page Details */

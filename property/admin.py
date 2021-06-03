@@ -2,6 +2,8 @@ from django.contrib import admin
 from django_summernote.admin import SummernoteModelAdmin
 
 # Register your models here.
+from tof.admin import TofAdmin, TranslationTabularInline
+
 from property.models import Property, PropertyImages, Place, Category, PropertyReview, PropertyBook, \
     PropertyRoomFacilities
 
@@ -11,10 +13,15 @@ class SomeModelAdmin(SummernoteModelAdmin):
     list_display = ['name', 'price', 'get_avg_rating', 'check_availability']
 
 
+class CategoryAdmin(TofAdmin):
+    # list_display = ('name')
+    inlines = (TranslationTabularInline, )
+
+
 admin.site.register(Property, SomeModelAdmin)
 admin.site.register(PropertyImages)
 admin.site.register(Place)
-admin.site.register(Category)
+admin.site.register(Category, CategoryAdmin)
 admin.site.register(PropertyReview)
 admin.site.register(PropertyRoomFacilities)
 

@@ -1,10 +1,13 @@
 from django.contrib.auth.models import User
+from django.core.mail import send_mail
 from django.db.models import Q, Count
 from django.shortcuts import render
-
+from .tasks import send_mail_task
 # Create your views here.
 from blog.models import Post
-from property.models import Place, Property, Category, PropertyRoomFacilities
+from project import settings
+from property.models import Place, Property, Category, PropertyRoomFacilities, PropertyBook
+from settings.models import Settings
 
 
 def home(request):
@@ -52,10 +55,37 @@ def home_search(request):
 
 
 def category_filter(request,category):
-    category = Category.objects.get(name=category)
+    category = Category.objects.get(id=category)
     property_list = Property.objects.filter(category=category)
     return render(request,"settings/home_search.html", {'property_list': property_list})
 
 
-def contact_us(request):
-    pass
+def contact(request):
+    site_info = Settings.objects.last()
+
+    if request.method == 'POST':
+        subject = request.POST['subject']
+        name = request.POST['name']
+        email = request.POST['email']
+        message = request.POST['message']
+
+        send_mail_task.delay(subject, name, email, message)
+
+    return render(request,'settings/contact.html',{'site_info': site_info})
+
+
+def dashboard(request):
+    users_count = User.objects.all().count()
+    places_count = Place.objects.all().annotate(property_count=Count('property_place')).count()
+    restaurant_count = Property.objects.filter(category__name='Restaurant').count()
+    hotels_count = Property.objects.filter(category__name='Hotels').count()
+    posts_count = Post.objects.all().count()
+    booking_count = PropertyBook.objects.all().count()
+    return render(request,'settings/dashboard.html', {
+        'users_count': users_count,
+        'places_count': places_count,
+        'restaurant_count': restaurant_count,
+        'hotels_count': hotels_count,
+        'posts_count': posts_count,
+        'booking_count': booking_count
+    })

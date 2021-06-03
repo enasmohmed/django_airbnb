@@ -1,6 +1,7 @@
 from django.db import models
 
 # Create your models here.
+from django.urls import reverse
 
 
 class Settings(models.Model):
@@ -17,3 +18,6 @@ class Settings(models.Model):
 
     def __str__(self):
         return self.site_name
+
+    def get_absolute_url(self):
+        return reverse("Settings_detail", kwargs={"pk": self.pk})

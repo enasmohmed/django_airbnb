@@ -37,6 +37,9 @@
 
 
     <!-- Stylesheets -->
+    <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/owl.theme.default.min.css' %}">
+
     <!-- Dropdown Menu -->
     <link rel="stylesheet" href="{% static 'css/superfish.css' %}">
     <link rel="stylesheet" href="{% static 'css/bootstrap-datepicker.min.css' %}">
@@ -70,11 +73,11 @@
                             </h1>
                             <nav id="fh5co-menu-wrap" role="navigation">
                                 <ul class="sf-menu" id="fh5co-primary-menu">
-                                    <li><a class="active" href="/">{% translate "Home" %}</a></li>
-                                    <li><a href="{% url 'property:property_list' %}" class="fh5co-sub-ddown">{% translate "Properties" %}</a></li>
-                                    <li><a href="{% url 'about:about' %}">{% translate "About" %}</a></li>
-                                    <li><a href="{% url 'blog:post_list' %}">{% translate "Blog" %}</a></li>
-                                    <li><a href="{% url 'home:contact_us' %}">{% translate "Contact" %}</a></li>
+                                    <li><a class="active" href="/">{% trans "Home" %}</a></li>
+                                    <li><a href="{% url 'property:property_list' %}">{% trans "Properties" %}</a></li>
+                                    <li><a href="{% url 'about:about' %}">{% trans "About" %}</a></li>
+                                    <li><a href="{% url 'blog:post_list' %}">{% trans "Blog" %}</a></li>
+                                    <li><a href="{% url 'home:contact' %}">{% trans "Contact" %}</a></li>
                                     {% if request.user.is_authenticated %}
                                     <li class="cta"><a class="fh5co-sub-ddown bord" href="{% url 'accounts:profile' %}"><span>Profile</span></a>
                                         <ul class="fh5co-sub-menu">
@@ -83,24 +86,28 @@
                                         </ul>
                                     </li>
                                     {% else %}
-                                    <li class="cta"><a  class="bord" href="{% url 'login' %}"><span>Login</span></a></li>
+                                    <li class="cta"><a class="bord" href="{% url 'login' %}"><span>Login</span></a></li>
                                     <li class="cta"><a class="bord" href="{% url 'accounts:signup' %}"><span>Signup</span></a></li>
                                     {% endif %}
-                                   <form action="{% url 'set_language' %}" method="post">{% csrf_token %}
-                                    <input name="next" type="hidden" value="{{ redirect_to }}">
-                                    <select name="language">
-                                        {% get_current_language as LANGUAGE_CODE %}
-                                        {% get_available_languages as LANGUAGES %}
-                                        {% get_language_info_list for LANGUAGES as languages %}
-                                        {% for language in languages %}
-                                        <option value="{{ language.code }}" {% if language.code == LANGUAGE_CODE %}
-                                            selected{% endif %}>
-                                            {{ language.name_local }} ({{ language.code }})
-                                        </option>
-                                        {% endfor %}
-                                    </select>
-                                    <input type="submit" value="Go">
-                                </form>
+                                    <li>
+                                        <form action="{% url 'set_language' %}" method="post"  class="form-lang">
+                                               {% csrf_token %}
+                                            <input name="next" type="hidden" value="{{ redirect_to }}">
+                                            <select name="language">
+                                                {% get_current_language as LANGUAGE_CODE %}
+                                                {% get_available_languages as LANGUAGES %}
+                                                {% get_language_info_list for LANGUAGES as languages %}
+                                                {% for language in languages %}
+                                                <option value="{{ language.code }}" {% if language.code == LANGUAGE_CODE %}
+                                                    selected{% endif %}>
+                                                    {{ language.name_local }}  ({{ language.code }})
+                                                </option>
+                                                {% endfor %}
+                                            </select>
+                                            <input type="submit" value="Go" class="input-go">
+                                        </form>
+                                    </li>
+
                                 </ul>
 
                             </nav>
@@ -192,6 +199,8 @@
 
     <script defer src="{% static 'js/all.js' %}"></script>
     <!--load all styles -->
+    <script src="{% static 'js/google_map.js' %}"></script>
+    <script src="{% static 'js/owl.carousel.min.js' %}"></script>
 
     <!-- Javascripts -->
     <script src="{% static 'js/jquery-2.1.4.min.js' %}"></script>
