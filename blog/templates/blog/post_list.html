@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block body %}
+
+<div class="fh5co-parallax" style="background-image: url({% static 'images/slider1.jpg' %});"
+    data-stellar-background-ratio="0.5">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row">
+            <div
+                class="col-md-12 col-md-offset-0 col-sm-12 col-sm-offset-0 col-xs-12 col-xs-offset-0 text-center fh5co-table">
+                <div class="fh5co-intro fh5co-table-cell">
+                    <h1 class="text-center">Post List</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div id="fh5co-blog-section">
+    <div class="container">
+        <div class="row">
+            {% for post in object_list %}
+            <div class="col-md-4">
+                <div class="blog-grid" style="background-image: url({{post.image.url}});">
+                    <div class="date text-center">
+                        <span><i class="fa fa-rss"></i> ({{forloop.counter}})</span>
+<!--						<small>New</small>-->
+                    </div>
+                </div>
+                <div class="desc">
+<!--                     <span class="tag">Tips, Travel</span>-->
+                    <h3 class="mt-4"><a href="{{post.get_absolute_url}}">{{post.title}}</a></h3>
+                    <div class="meta mt-5">
+                        <div><a href="{{post.get_absolute_url}}">{{post.created_at|date:"F j, Y"}}</a>
+                            <a href="{{post.get_absolute_url}}">{{post.author}}</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        	<!-- Start Pagination -->
+		{% if is_paginated %}
+		<nav aria-label="Page navigation" style="text-align: center !important;">
+			<ul class="pagination">
+				{% if page_obj.has_previous %}
+				<li class="page-item">
+					<a class="page-link" href="?page={{ page_obj.previous_page_number }}" aria-label="Previous">
+						<span aria-hidden="true">&laquo;</span>
+					</a>
+				</li>
+				{% else %}
+				<li class="page-item disabled">
+					<span aria-hidden="true">&laquo;</span>
+				</li>
+				{% endif %}
+
+				{% for i in paginator.page_range %}
+				{% if page_obj.number == i %}
+				<li class="page-item"><span class="page-link">{{ i }}</span></li>
+				{% else %}
+				<li class="page-item"><a class="page-link" href="?page={{ i }}">{{ i }}</a></li>
+				{% endif %}
+				{% endfor %}
+
+				{% if page_obj.has_next %}
+				<li class="page-item">
+					<a class="page-link" href="?page={{ page_obj.next_page_number }}" aria-label="Next">
+						<span aria-hidden="true">&raquo;</span>
+					</a>
+				</li>
+				{% else %}
+				<li class="page-item disabled">
+					<span aria-hidden="true">&raquo;</span>
+				</li>
+				{% endif %}
+
+			</ul>
+		</nav>
+		{% endif %}
+		<!-- End Pagination -->
+    </div>
+</div>
+{% endblock body %}

@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block body %}
+
+<div id="fh5co-wrapper">
+	<div id="fh5co-page">
+		<!-- end:fh5co-header -->
+		<div class="fh5co-parallax" style="background-image: url(/static/images/slider1.jpg);"
+			data-stellar-background-ratio="0.5">
+			<div class="overlay"></div>
+			<div class="container">
+				<div class="row">
+					<div
+						class="col-md-12 col-md-offset-0 col-sm-12 col-sm-offset-0 col-xs-12 col-xs-offset-0 text-center fh5co-table">
+						<div class="fh5co-intro fh5co-table-cell">
+							<h1 class="text-center">My Reservation</h1>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+		<div id="fh5co-hotel-section">
+			<div class="container">
+				<div class="row">
+                    <div class="col-lg-9 mt-2">
+						<div class="row">
+							{% for property in user_reservation %}
+							<div class="col-md-4">
+								<div class="hotel-content" style="width: 109%;">
+									<div class="hotel-grid" style="background-image: url({{property.property.image.url}});">
+										<div class="price"><small>For as low as</small><span>${{property.property.price}}/night</span>
+										</div>
+										<a class="book-now text-center" href="{% url 'accounts:add_feedback' property.property.slug %}"><i
+												class="fa fa-comment"></i> Add
+											Review</a>
+									</div>
+									<div class="desc">
+										<h3><a href="{{property.get_absolute_url}}">{{property.property.name}}</a></h3>
+										<div class="start-rating">
+											<span class="fa fa-star checked"></span>
+											<span class="fa fa-star checked"></span>
+											<span class="fa fa-star checked"></span>
+											<span class="fa fa-star"></span>
+											<span class="fa fa-star"></span>
+											<span>8 Rating</span><hr/>
+										</div>
+										<span><i class="fa fa-map-marker"></i> {{property.property.place}}</span>
+									</div>
+								</div>
+							</div>
+							{% endfor %}
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+{% endblock body %}

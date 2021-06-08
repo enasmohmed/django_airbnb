@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block body %}
+    <div id="fh5co-wrapper">
+        <div id="fh5co-page">
+            <!-- end:fh5co-header -->
+            <div class="fh5co-parallax" style="background-image: url(/static/images/slider1.jpg);"
+                data-stellar-background-ratio="0.5">
+                <div class="overlay"></div>
+                <div class="container">
+                    <div class="row">
+                        <div
+                            class="col-md-12 col-md-offset-0 col-sm-12 col-sm-offset-0 col-xs-12 col-xs-offset-0 text-center fh5co-table">
+                            <div class="fh5co-intro fh5co-table-cell">
+                                <h1 class="text-center">Services Hotels</h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="fh5co-services-section">
+            <div class="container">
+                <div class="row">
+                    
+                    {% for service in services %}
+                        <div class="col-md-4">
+                        <div class="services">
+                            <span><i class="{{service.icon}}"></i></span>
+                            <div class="desc">
+                                <h3>{{service.title}}</h3>
+                                <p>{{service.description}}</p>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>
+
+{% endblock body %}

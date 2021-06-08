@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block body %}
+<div id="fh5co-wrapper">
+	<div id="fh5co-page">
+		<!-- end:fh5co-header -->
+		<div class="fh5co-parallax" style="background-image: url(/static/images/slider1.jpg);"
+			data-stellar-background-ratio="0.5">
+			<div class="overlay"></div>
+			<div class="container">
+				<div class="row">
+					<div
+						class="col-md-12 col-md-offset-0 col-sm-12 col-sm-offset-0 col-xs-12 col-xs-offset-0 text-center fh5co-table">
+						<div class="fh5co-intro fh5co-table-cell">
+							<h1 class="text-center">Dashboard</h1>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+		<div id="fh5co-hotel-section">
+			<div class="container">
+				<div class="row col-md-7">
+					<h2>Count</h2>
+					<canvas id="myChart2" width="400" height="400"></canvas>
+				</div>
+			</div>
+		</div>
+
+
+	</div>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.3.2/chart.min.js"></script>
+	<script>
+		var ctx2 = document.getElementById('myChart2').getContext('2d');
+        var myPieChart = new Chart(ctx2,{
+            type: 'pie',
+           data: {
+				labels: ['Posts', 'Restaurant', 'Hotels', 'Book', 'User', 'Places'],
+				datasets: [{
+					label: 'Count',
+					data: [{{posts_count}}, {{restaurant_count}}, {{hotels_count}}, {{booking_count}}, {{users_count}}, {{places_count}}],
+					backgroundColor: [
+						'rgba(255, 99, 132, 0.2)',
+						'rgba(54, 162, 235, 0.2)',
+						'rgba(255, 206, 86, 0.2)',
+						'rgba(75, 192, 192, 0.2)',
+						'rgba(153, 102, 255, 0.2)',
+						'rgba(255, 159, 64, 0.2)'
+					],
+					borderColor: [
+						'rgba(255, 99, 132, 1)',
+						'rgba(54, 162, 235, 1)',
+						'rgba(255, 206, 86, 1)',
+						'rgba(75, 192, 192, 1)',
+						'rgba(153, 102, 255, 1)',
+						'rgba(255, 159, 64, 1)'
+					],
+					borderWidth: 1
+				}]
+			},
+			options: {
+				scales: {
+					y: {
+						beginAtZero: true
+					}
+				}
+			}
+		});
+    </script>
+
+</div>
+{% endblock body %}

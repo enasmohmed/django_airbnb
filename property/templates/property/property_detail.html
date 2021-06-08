@@ -1,0 +1,197 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load bootstrap4 %}
+{% block body %}
+<div id="fh5co-wrapper">
+	<div id="fh5co-page">
+		<!-- end:fh5co-header -->
+		<div class="fh5co-parallax" style="background-image: url(/static/images/slider1.jpg);"
+			data-stellar-background-ratio="0.5">
+			<div class="overlay"></div>
+			<div class="container">
+				<div class="row">
+					<div
+						class="col-md-12 col-md-offset-0 col-sm-12 col-sm-offset-0 col-xs-12 col-xs-offset-0 text-center fh5co-table">
+						<div class="fh5co-intro fh5co-table-cell">
+							<h1 class="text-center">Property Detail</h1>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="container mt-5">
+			<div class="row">
+				<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+					<ol class="carousel-indicators">
+						<li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+						<li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+						<li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+					</ol>
+					<div class="carousel-inner">
+						{% for image in property_images %}
+						<div class="carousel-item {% if forloop.first %}active{% endif %}">
+							<img class="d-block mx-auto" src="{{image.image.url}}" alt="First slide" style="max-width: 60%;
+										padding: 40px 0;
+										overflow: hidden;
+										position: relative;">
+						</div>
+						{% endfor %}
+					</div>
+					<a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+						<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+						<span class="sr-only">Previous</span>
+					</a>
+					<a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+						<span class="carousel-control-next-icon" aria-hidden="true"></span>
+						<span class="sr-only">Next</span>
+					</a>
+				</div>
+				<section class="ftco-section ftco-degree-bg">
+					<div class="container">
+						<div class="row">
+							<div class="col-lg-10 mx-auto">
+								<div class="row">
+									<div class="col-md-12 hotel-single mt-5 mb-5 ftco-animate">
+										<span>Our Best hotels &amp; Rooms</span>
+										<h2>{{object.name}}</h2>
+										<p class="rate mb-5">
+											<span class="loc"><a href="#"><i class="icon-map"></i>
+													{{object.place}}</a></span>
+											<span class="star">
+												<i class="fa fa-star checked"></i>
+												<i class="fa fa-star checked"></i>
+												<i class="fa fa-star"></i>
+												<i class="fa fa-star"></i>
+												<i class="fa fa-star"></i>
+												{{review_count}} Rating</span>
+										</p>
+										<p>{{object.description|safe}}</p>
+									</div>
+									<div class="book_room">
+										{% if object.check_availability ==  'Availability' %}
+										<h4> Availability Today </h4>
+										{% else %}
+										<h4> The Room Is Being Booked , The Reservation {{object.check_availability}}
+										</h4>
+
+										{% endif %}
+									</div>
+
+									<div class="col-md-12 hotel-single ftco-animate mb-5 mt-4">
+										<h4 class="mb-5">Check Availability &amp; Booking</h4>
+										<form class="form" method="post">
+											{% csrf_token %}
+											{% bootstrap_form form %}
+											{% buttons %}
+											<button type="submit" class="btn btn-primary py-3 w-100">Check
+												Availability</button>
+											{% endbuttons %}
+										</form>
+									</div>
+									<div class="col-md-12 hotel-single ftco-animate mb-5 mt-4">
+										<h4 class="mb-4">Review &amp; Ratings</h4>
+										<div class="row">
+											<div class="col-md-6">
+												<form method="post" class="star-rating">
+													<div class="form-check">
+														<input type="checkbox" class="form-check-input"
+															id="exampleCheck1">
+														<label class="form-check-label" for="exampleCheck1">
+															<p class="rate"><span>
+																	<i class="fa fa-star checked"></i>
+																	<i class="fa fa-star checked"></i>
+																	<i class="fa fa-star checked"></i>
+																	<i class="fa fa-star"></i>
+																	<i class="fa fa-star"></i>
+																	100 Ratings</span>
+															</p>
+														</label>
+													</div>
+												</form>
+											</div>
+										</div>
+									</div>
+									<div class="col-md-12 hotel-single ftco-animate mb-5 mt-5">
+										<h4 class="mb-4">Related Hotels</h4>
+										<div class="row">
+
+											{% for property in related %}
+											<div class="col-md-4">
+												<div class="card">
+													<img class="card-img-top" src="{{property.image.url}}"
+														alt="Card image cap">
+													<div class="text p-3">
+														<div class="d-flex">
+															<div class="one">
+																<h3><a href="hotel-single.html">{{property.name}}</a>
+																</h3>
+																<p class="rate">
+																	<i class="fa fa-star checked"></i>
+																	<i class="fa fa-star checked"></i>
+																	<i class="fa fa-star"></i>
+																	<i class="fa fa-star"></i>
+																	<i class="fa fa-star"></i>
+																	<span>8 Rating</span>
+																</p>
+															</div>
+															<hr />
+															<div class="two" style="margin-left:20%">
+																<span
+																	class="price per-price">${{property.price}}<br><small>/night</small></span>
+															</div>
+														</div>
+														<hr>
+														<p class="bottom-area d-flex">
+															<span><i class="fa fa-map-marker"></i>
+																{{property.place}}</span>
+															<span class="ml-auto"><a href="#">Book Now</a></span>
+														</p>
+													</div>
+												</div>
+											</div>
+											{% endfor %}
+										</div>
+									</div>
+									<!--									<div class="col-md-12 hotel-single ftco-animate mb-5 mt-5">-->
+									<!--										<h4 class="mb-4">Property Feedback</h4>-->
+									<!--										<div class="row">-->
+
+									<!--											{% for review in property.property_review.all %}-->
+									<!--											<div class="col-md-4">-->
+									<!--												<div class="destination">-->
+									<!--													<div class="text p-3">-->
+									<!--														<div class="d-flex">-->
+									<!--															<div class="one">-->
+									<!--																<h3><a href="">{{review.author}}</a></h3>-->
+									<!--																<p class="rate">-->
+									<!--																	{% with ''|center:review.rating as range %}-->
+									<!--																	{% for _ in range %}-->
+									<!--																	<i class="fa fa-star checked"></i>-->
+									<!--																	{% endfor %}-->
+									<!--																	{% endwith %}-->
+
+									<!--																</p>-->
+									<!--															</div>-->
+									<!--														</div>-->
+									<!--														<p>{{review.feedback}}</p>-->
+
+									<!--													</div>-->
+									<!--												</div>-->
+									<!--											</div>-->
+									<!--											{% endfor %}-->
+									<!--										</div>-->
+									<!--									</div>-->
+
+								</div>
+
+							</div>
+						</div> <!-- .col-md-8 -->
+					</div>
+			</div>
+			</section> <!-- .section -->
+		</div>
+
+	</div>
+</div>
+{% endblock body %}
