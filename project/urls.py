@@ -31,6 +31,7 @@ urlpatterns = [
     path('', include('settings.urls', namespace='home')),
     path('summernote/', include('django_summernote.urls')),
 
+
     # api
     path('api-auth/', include('rest_framework.urls')),
     path('rest-auth/', include('dj_rest_auth.urls')),

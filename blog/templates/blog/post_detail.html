@@ -25,6 +25,7 @@
         <p>
           {{post.description|safe}}
         </p>
+        <p>Nubmer Of Views Post: ({{post.post_views}})</p>
 
         <div class="tag-widget post-tag-container mb-5 mt-5">
           <div class="tagcloud">
@@ -38,14 +39,14 @@
 
         <div class="about-author d-flex p-5 bg-light">
           <div class="bio align-self-md-center mr-5">
-            <img src="images/person_1.jpg" alt="Image placeholder" class="img-fluid mb-4">
+            <img src="{{post.image.url}}" alt="Image placeholder" class="img-fluid mb-4">
           </div>
-          <div class="desc align-self-md-center">
-            <h3>Lance Smith</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus itaque, autem necessitatibus voluptate
-              quod mollitia delectus aut, sunt placeat nam vero culpa sapiente consectetur similique, inventore eos
-              fugit cupiditate numquam!</p>
-          </div>
+            <div class="desc align-self-md-center">
+              <h3> {{post.author}}</h3>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus itaque, autem necessitatibus voluptate
+                quod mollitia delectus aut, sunt placeat nam vero culpa sapiente consectetur similique, inventore eos
+                fugit cupiditate numquam!</p>
+            </div>
         </div>
 
 
@@ -61,7 +62,7 @@
         <div class="sidebar-box">
           <form action="{% url 'blog:post_list' %}" method="GET" class="search-form">
             <div class="form-group">
-              <span class="icon fa fa-search" style="position: absolute;top: 6%;left: 78%;"></span>
+              <span class="icon fa fa-search" style="position: absolute;top: 4%;left: 80%;"></span>
               <input type="text" class="form-control" name="q" placeholder="Type a keyword and hit enter">
             </div>
           </form>

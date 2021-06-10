@@ -86,7 +86,6 @@ def add_feedback(request, slug):
             form = PropertyReviewForm(instance=user_feedback)
         return render(request, 'profile/property_feedback.html', {'form': form, 'property': property})
 
-
     except:
         if request.method == 'POST':
             form = PropertyReviewForm(request.POST)
@@ -95,21 +94,10 @@ def add_feedback(request, slug):
                 myform.property = property
                 myform.author = request.user
                 myform.save()
+                return redirect('/')
 
         else:
             form = PropertyReviewForm()
         return render(request, 'profile/property_feedback.html', {'form': form, 'property': property})
 
 
-'''
-        if request.method == 'POST':
-            form = PropertyReviewForm(request.POST , instance=user_feedback)
-            if form.is_valid():
-                myform = form.save(commit=False)
-                myform.property = property
-                myform.author = request.user
-                myform.save()
-        else:
-            form = PropertyReviewForm(instance=user_feedback)
-        return render(request,'profile/property_feedback.html' , {'form':form , 'property':property})
-        '''

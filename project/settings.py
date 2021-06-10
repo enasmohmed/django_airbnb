@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-x6og(tgmfa31m)9(ibyusghy-su!$=huaocicd)!6y3%+&4k(w
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['hoteldj.herokuapp.com', '127.0.0.1', '*']
+ALLOWED_HOSTS = ['hoteldjango12.herokuapp.com', '127.0.0.1', '*']
 
 
 # Application definition
@@ -54,6 +54,7 @@ INSTALLED_APPS = [
     'django_filters',
     'tof',
     'coverage',
+    'django_seed',
 
     # api rest framework
     'rest_framework',

@@ -14,11 +14,13 @@ class Post(models.Model):
     author = models.ForeignKey(User, related_name='post_author',verbose_name=_("author"), on_delete=models.CASCADE)
     title = models.CharField(_("title"), max_length=100)
     tags = TaggableManager(_("tags"))
+    post_views = models.PositiveIntegerField(default=0)
     image = models.ImageField(_("image"), upload_to='post/')
     created_at = models.DateTimeField(_("created at"), default=timezone.now)
     description = models.TextField(_("description"), max_length=15000)
     category = models.ForeignKey('Category', related_name='post_category',verbose_name=_("category"), on_delete=models.CASCADE)
     slug = models.SlugField(_('url'),blank=True, null=True)
+
 
     def save(self, *args, **kwargs):
         if not self.slug:

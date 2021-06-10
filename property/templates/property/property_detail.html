@@ -153,35 +153,35 @@
 											{% endfor %}
 										</div>
 									</div>
-									<!--									<div class="col-md-12 hotel-single ftco-animate mb-5 mt-5">-->
-									<!--										<h4 class="mb-4">Property Feedback</h4>-->
-									<!--										<div class="row">-->
+									<div class="col-md-12 hotel-single ftco-animate mb-5 mt-5">
+										<h4 class="mb-4">Property Feedback</h4>
+										<div class="row">
 
-									<!--											{% for review in property.property_review.all %}-->
-									<!--											<div class="col-md-4">-->
-									<!--												<div class="destination">-->
-									<!--													<div class="text p-3">-->
-									<!--														<div class="d-flex">-->
-									<!--															<div class="one">-->
-									<!--																<h3><a href="">{{review.author}}</a></h3>-->
-									<!--																<p class="rate">-->
-									<!--																	{% with ''|center:review.rating as range %}-->
-									<!--																	{% for _ in range %}-->
-									<!--																	<i class="fa fa-star checked"></i>-->
-									<!--																	{% endfor %}-->
-									<!--																	{% endwith %}-->
+											{% for review in property.property_review.all %}
+											<div class="col-md-4">
+												<div class="destination">
+													<div class="text p-3">
+														<div class="d-flex">
+															<div class="one">
+																<h3><a href="">{{review.author}}</a></h3>
+																<p class="rate">
+																	{% with ''|center:review.rating as range %}
+																		{% for _ in range %}
+																			<i class="fa fa-star checked"></i>
+																		{% endfor %}
+																	{% endwith %}
 
-									<!--																</p>-->
-									<!--															</div>-->
-									<!--														</div>-->
-									<!--														<p>{{review.feedback}}</p>-->
+																</p>
+															</div>
+														</div>
+														<p>{{review.feedback}}</p>
 
-									<!--													</div>-->
-									<!--												</div>-->
-									<!--											</div>-->
-									<!--											{% endfor %}-->
-									<!--										</div>-->
-									<!--									</div>-->
+													</div>
+												</div>
+											</div>
+											{% endfor %}
+										</div>
+									</div>
 
 								</div>
 

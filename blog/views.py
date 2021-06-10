@@ -3,13 +3,15 @@ from django.shortcuts import render
 from django.views.generic import ListView , DetailView
 # Create your views here.
 from taggit.models import Tag
+from django.db.models import F
 
+from accounts.models import Profile
 from blog.models import Post, Category
 
 
 class PostList(ListView):
     model = Post
-    paginate_by = 2   # pagination
+    paginate_by = 10   # pagination
 
     def get_queryset(self):
         name = self.request.GET.get('q', '')
@@ -22,6 +24,12 @@ class PostList(ListView):
 
 class PostDetail(DetailView):
     model = Post
+
+    def get_object(self):
+        post = super().get_object()
+        post.post_views += 1
+        post.save()
+        return post
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)

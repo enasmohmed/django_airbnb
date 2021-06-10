@@ -93,8 +93,6 @@ class PropertyReview(models.Model):
         (5, 5),
     ])
 
-
-
     def __str__(self):
         return str(self.property)
 
