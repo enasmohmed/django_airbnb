@@ -68,13 +68,20 @@
 										</p>
 										<p>{{object.description|safe}}</p>
 									</div>
-									<div class="book_room">
+									<div class="book_room w-100">
+										{% if messages %}
+										<div class="alert alert-success text-center" role="alert">
+											{% for message in messages %}
+											  {{ message }}
+											{% endfor %}
+										</div>
+										{% endif %}
+
 										{% if object.check_availability ==  'Availability' %}
 										<h4> Availability Today </h4>
 										{% else %}
 										<h4> The Room Is Being Booked , The Reservation {{object.check_availability}}
 										</h4>
-
 										{% endif %}
 									</div>
 

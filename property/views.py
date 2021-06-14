@@ -1,4 +1,5 @@
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 from django.forms import Form
 from django.shortcuts import render, redirect, get_object_or_404
 
@@ -24,7 +25,6 @@ class PropertyDetail(FormMixin, DetailView):
     model = Property
     form_class = PropertyBookForm  # book
 
-
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context["related"] = Property.objects.filter(category=self.get_object().category)[:3]
@@ -34,15 +34,18 @@ class PropertyDetail(FormMixin, DetailView):
     
     # book
     def post(self, request, *args, **kwargs):
-        form = self.get_form()
-        if form.is_valid():
-            myform = form.save(commit=False)
-            myform.property = self.get_object()
-            myform.user = request.user
-            myform.save()
-            messages.success(request, 'Your Reservation Confirmed ')
+        if request.user.is_authenticated:
+            form = self.get_form()
+            if form.is_valid():
+                myform = form.save(commit=False)
+                myform.property = self.get_object()
+                myform.user = request.user
+                myform.save()
+                messages.success(request, 'Your Reservation Confirmed ')
 
-            return redirect(reverse('property:property_detail', kwargs={'slug':self.get_object().slug}))
+                return redirect(reverse('property:property_detail', kwargs={'slug':self.get_object().slug}))
+        else:
+            return redirect(reverse('accounts:signup'))
 
 
 class NewProperty(CreateView):
