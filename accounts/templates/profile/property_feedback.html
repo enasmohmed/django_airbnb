@@ -41,13 +41,14 @@
 						<h2>{{property}}</h2>
 						<p class="rate mb-5">
 							<span class="loc"><a href="#"><i class="icon-map"></i> {{property.place}}</a></span>
-							<span class="star">
-								<i class="fa fa-star checked"></i>
-								<i class="fa fa-star checked"></i>
-								<i class="fa fa-star"></i>
-								<i class="fa fa-star"></i>
-								<i class="fa fa-star"></i>
-								{{review_count}} Rating</span>
+							<span class="start-rating">
+								<i class="fa fa-star color_star{% if property.avaregereview < 1%}-o empty{% endif%}"></i>
+								<i class="fa fa-star color_star{% if property.avaregereview < 2%}-o empty{% endif%}"></i>
+								<i class="fa fa-star color_star{% if property.avaregereview < 3%}-o empty{% endif%}"></i>
+								<i class="fa fa-star color_star{% if property.avaregereview < 4%}-o empty{% endif%}"></i>
+								<i class="fa fa-star color_star{% if property.avaregereview < 5%}-o empty{% endif%}"></i>
+								  {{ property.countreview}} Rating
+							</span>
 						</p>
 						<p> {{property.description|safe}}</p>
 
@@ -60,7 +61,7 @@
 						 {% csrf_token %}
 						     {% bootstrap_form form %}
 							{% buttons %}
-								<button type="submit" class="btn btn-primary py-3">Add Review</button>
+								<button type="submit" class="btn btn-primary py-3 w-100">Add Review</button>
 							{% endbuttons %}
 						</form>
 					</div>

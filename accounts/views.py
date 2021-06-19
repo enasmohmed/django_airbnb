@@ -73,7 +73,6 @@ def my_listing(request):
 
 def add_feedback(request, slug):
     property = get_object_or_404(Property, slug=slug)
-
     try:
         user_feedback = get_object_or_404(PropertyReview, property=property, author=request.user)
         if request.method == 'POST':
@@ -99,5 +98,7 @@ def add_feedback(request, slug):
         else:
             form = PropertyReviewForm()
         return render(request, 'profile/property_feedback.html', {'form': form, 'property': property})
+
+
 
 

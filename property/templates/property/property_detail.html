@@ -58,13 +58,14 @@
 										<p class="rate mb-5">
 											<span class="loc"><a href="#"><i class="icon-map"></i>
 													{{object.place}}</a></span>
-											<span class="star">
-												<i class="fa fa-star checked"></i>
-												<i class="fa fa-star checked"></i>
-												<i class="fa fa-star"></i>
-												<i class="fa fa-star"></i>
-												<i class="fa fa-star"></i>
-												{{review_count}} Rating</span>
+											<span class="start-rating">
+													<i class="fa fa-star color_star{% if property.avaregereview < 1%}-o empty{% endif%}"></i>
+													<i class="fa fa-star color_star{% if property.avaregereview < 2%}-o empty{% endif%}"></i>
+													<i class="fa fa-star color_star{% if property.avaregereview < 3%}-o empty{% endif%}"></i>
+													<i class="fa fa-star color_star{% if property.avaregereview < 4%}-o empty{% endif%}"></i>
+													<i class="fa fa-star color_star{% if property.avaregereview < 5%}-o empty{% endif%}"></i>
+													  <span>{{ property.avaregereview }} Rating </span>
+											</span>
 										</p>
 										<p>{{object.description|safe}}</p>
 									</div>
@@ -80,7 +81,7 @@
 										{% if object.check_availability ==  'Availability' %}
 										<h4> Availability Today </h4>
 										{% else %}
-										<h4> The Room Is Being Booked , The Reservation {{object.check_availability}}
+										<h4>The Room Is Being Booked , The Reservation {{object.check_availability}}
 										</h4>
 										{% endif %}
 									</div>
@@ -97,25 +98,10 @@
 										</form>
 									</div>
 									<div class="col-md-12 hotel-single ftco-animate mb-5 mt-4">
-										<h4 class="mb-4">Review &amp; Ratings</h4>
 										<div class="row">
 											<div class="col-md-6">
-												<form method="post" class="star-rating">
-													<div class="form-check">
-														<input type="checkbox" class="form-check-input"
-															id="exampleCheck1">
-														<label class="form-check-label" for="exampleCheck1">
-															<p class="rate"><span>
-																	<i class="fa fa-star checked"></i>
-																	<i class="fa fa-star checked"></i>
-																	<i class="fa fa-star checked"></i>
-																	<i class="fa fa-star"></i>
-																	<i class="fa fa-star"></i>
-																	100 Ratings</span>
-															</p>
-														</label>
-													</div>
-												</form>
+												<a href="{% url 'accounts:add_feedback' property.slug %}">
+													<button type="button" class="btn btn-primary">Add Review & Rating</button></a>
 											</div>
 										</div>
 									</div>
@@ -133,13 +119,13 @@
 															<div class="one">
 																<h3><a href="hotel-single.html">{{property.name}}</a>
 																</h3>
-																<p class="rate">
-																	<i class="fa fa-star checked"></i>
-																	<i class="fa fa-star checked"></i>
-																	<i class="fa fa-star"></i>
-																	<i class="fa fa-star"></i>
-																	<i class="fa fa-star"></i>
-																	<span>8 Rating</span>
+																<p class="start-rating">
+																	<i class="fa fa-star color_star{% if property.avaregereview < 1%}-o empty{% endif%}"></i>
+																	<i class="fa fa-star color_star{% if property.avaregereview < 2%}-o empty{% endif%}"></i>
+																	<i class="fa fa-star color_star{% if property.avaregereview < 3%}-o empty{% endif%}"></i>
+																	<i class="fa fa-star color_star{% if property.avaregereview < 4%}-o empty{% endif%}"></i>
+																	<i class="fa fa-star color_star{% if property.avaregereview < 5%}-o empty{% endif%}"></i>
+																	   {{ property.avaregereview }} Rating
 																</p>
 															</div>
 															<hr />
@@ -163,25 +149,25 @@
 									<div class="col-md-12 hotel-single ftco-animate mb-5 mt-5">
 										<h4 class="mb-4">Property Feedback</h4>
 										<div class="row">
-
 											{% for review in property.property_review.all %}
 											<div class="col-md-4">
 												<div class="destination">
-													<div class="text p-3">
+													<div class="text p-4">
 														<div class="d-flex">
 															<div class="one">
-																<h3><a href="">{{review.author}}</a></h3>
-																<p class="rate">
-																	{% with ''|center:review.rating as range %}
-																		{% for _ in range %}
-																			<i class="fa fa-star checked"></i>
-																		{% endfor %}
-																	{% endwith %}
-
+																<h3><a href="{% url 'accounts:profile' %}">User: {{review.author}}</a></h3>
+																<p class="start-rating">Rate:
+																	<i class="fa fa-star color_star{% if property.avaregereview < 1%}-o empty{% endif%}"></i>
+																	<i class="fa fa-star color_star{% if property.avaregereview < 2%}-o empty{% endif%}"></i>
+																	<i class="fa fa-star color_star{% if property.avaregereview < 3%}-o empty{% endif%}"></i>
+																	<i class="fa fa-star color_star{% if property.avaregereview < 4%}-o empty{% endif%}"></i>
+																	<i class="fa fa-star color_star{% if property.avaregereview < 5%}-o empty{% endif%}"></i>
+																	<span>{{ property.avaregereview }} Rating </span>
 																</p>
 															</div>
 														</div>
-														<p>{{review.feedback}}</p>
+														<p>Create at: {{review.created_at|date:"j/n/Y - g A"}}</p>
+														<p>Feedback: {{review.feedback}}</p>
 
 													</div>
 												</div>

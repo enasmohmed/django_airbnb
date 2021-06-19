@@ -16,7 +16,7 @@ class PropertyBookForm(forms.ModelForm):
 class PropertyReviewForm(forms.ModelForm):
     class Meta:
         model = PropertyReview
-        fields = ['rate','feedback']
+        fields = ['rating','feedback']
 
 
 class PropertyImageFormset(forms.ModelForm):
@@ -30,7 +30,7 @@ PropertyImageFormset = inlineformset_factory(
     PropertyImages,
     form=PropertyImageFormset,
     fields=['image'],
-    extra=2,
+    extra=4,
     can_delete=True
 )
 

@@ -1,7 +1,9 @@
 from django.contrib.auth.models import User
+from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
 
 # Create your models here.
+from django.db.models import Avg, Count
 from django.urls import reverse
 from django.utils import timezone
 from django.utils.text import slugify
@@ -44,16 +46,30 @@ class Property(models.Model):
         else:
             return 'Availability'
 
-    def get_avg_rating(self):
-        all_reviews = self.review_property.all()
-        all_rating = 0
+    def avaregereview(self):
+        reviews = PropertyReview.objects.filter(property=self).aggregate(avarage=Avg('rating'))
+        avg = 0
+        if reviews["avarage"] is not None:
+            avg = int(reviews["avarage"])
+        return avg
 
-        if len(all_reviews) > 0 :
-            for review in all_reviews:
-                all_rating += review.rate
-            return round(all_rating/len(all_reviews),2)
-        else:
-            return '-'
+    def countreview(self):
+        reviews = PropertyReview.objects.filter(property=self).aggregate(count=Count('id'))
+        cnt = 0
+        if reviews["count"] is not None:
+            cnt = int(reviews["count"])
+        return cnt
+
+    # def get_avg_rating(self):
+    #     all_reviews = self.property_review.all()
+    #     all_rating = 0
+    #
+    #     if len(all_reviews) > 0 :
+    #         for review in all_reviews:
+    #             all_rating += review.rate
+    #         return round(all_rating/len(all_reviews),2)
+    #     else:
+    #         return '-'
     
 
 class PropertyImages(models.Model):
@@ -81,17 +97,11 @@ class Category(models.Model):
 
 
 class PropertyReview(models.Model):
-    author = models.ForeignKey(User, related_name='review_author', on_delete=models.CASCADE)
-    property = models.ForeignKey(Property, related_name='review_property', on_delete=models.CASCADE)
-    feedback = models.TextField(max_length=2000)
+    property = models.ForeignKey(Property, related_name='property_review', on_delete=models.CASCADE)
+    author = models.ForeignKey(User, related_name='review_owner', on_delete=models.CASCADE)
+    rating = models.PositiveIntegerField(validators=[MaxValueValidator(5), MinValueValidator(0)])
+    feedback = models.TextField(default='', max_length=2000)
     created_at = models.DateTimeField(default=timezone.now)
-    rate = models.IntegerField(choices=[
-        (1, 1),
-        (2, 2),
-        (3, 3),
-        (4, 4),
-        (5, 5),
-    ])
 
     def __str__(self):
         return str(self.property)
@@ -115,7 +125,6 @@ class PropertyBook(models.Model):
 
     def __str__(self):
         return str(self.property)
-
 
     def now_reservation(self):
         now = timezone.now().date()

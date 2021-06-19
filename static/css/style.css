@@ -9263,6 +9263,18 @@ input[type="text"] {
 .hotel-single .rate .checked{
    color: orange;
 }
+
+.start-rating {
+  display: inline-block;
+}
+
+.start-rating  .color_star {
+  color: #FFB656;
+}
+
+.start-rating > i .empty {
+  color: #DADADA;
+}
 /* End Rating */
 
 .sidebar-wrap {
@@ -9551,9 +9563,8 @@ input[type="text"] {
   opacity: 1; 
 }
 .ftco-section .destination .text {
-  border: 1px solid #e6e6e6;
-  border-top: 1px solid transparent;
-  background: #fff; 
+  border: 2px solid #FF5722;
+  background: #fff;
 }
 .ftco-section .destination .text h3 {
   font-size: 18px; 
