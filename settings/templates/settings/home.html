@@ -313,7 +313,17 @@
                                 Now</a>
                         </div>
                         <div class="desc">
-                            <h3><a href="{{restaurant.get_absolute_url}}">{{restaurant.name}}</a></h3><hr/>
+                            <h3><a href="{{restaurant.get_absolute_url}}">{{restaurant.name}}</a></h3>
+                            <div class="start-rating">
+                                <i class="fa fa-star color_star{% if restaurant.avaregereview < 1%}-o empty{% endif%}"></i>
+                                <i class="fa fa-star color_star{% if restaurant.avaregereview < 2%}-o empty{% endif%}"></i>
+                                <i class="fa fa-star color_star{% if restaurant.avaregereview < 3%}-o empty{% endif%}"></i>
+                                <i class="fa fa-star color_star{% if restaurant.avaregereview < 4%}-o empty{% endif%}"></i>
+                                <i class="fa fa-star color_star{% if restaurant.avaregereview < 5%}-o empty{% endif%}"></i>
+                                <span>{{ restaurant.avaregereview}} Rating</span>
+                            </div>
+
+                            <hr/>
                             <span><i class="fa fa-map-marker"></i> {{restaurant.place}}</span>
                         </div>
                     </div>
@@ -334,33 +344,26 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-4">
+            {% for review in review_count %}
+                <div class="col-md-4">
                 <div class="testimony">
                     <blockquote>
-                        &ldquo;If you’re looking for a top quality hotel look no further. We were upgraded free of
-                        charge to the Premium Suite, thanks so much&rdquo;
+                         &ldquo;{{review.feedback}}&rdquo;<br/>
+                         <i class="fa fa-bed"></i> {{review.property}}
+                        <br/>
+                        <p class="start-rating">
+                            <i class="fa fa-star color_star{% if review.property.avaregereview < 1%}-o empty{% endif%}"></i>
+                            <i class="fa fa-star color_star{% if review.property.avaregereview < 2%}-o empty{% endif%}"></i>
+                            <i class="fa fa-star color_star{% if review.property.avaregereview < 3%}-o empty{% endif%}"></i>
+                            <i class="fa fa-star color_star{% if review.property.avaregereview < 4%}-o empty{% endif%}"></i>
+                            <i class="fa fa-star color_star{% if review.property.avaregereview < 5%}-o empty{% endif%}"></i>
+                            <span>{{ review.property.avaregereview }} Rating </span>
+                        </p>
                     </blockquote>
-                    <p class="author"><cite>John Doe</cite></p>
+                    <p class="author"><cite><i class="fa fa-user-circle"></i> {{review.author}}</cite></p>
                 </div>
             </div>
-            <div class="col-md-4">
-                <div class="testimony">
-                    <blockquote>
-                        &ldquo;Me and my wife had a delightful weekend get away here, the staff were so friendly and
-                        attentive. Highly Recommended&rdquo;
-                    </blockquote>
-                    <p class="author"><cite>Rob Smith</cite></p>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="testimony">
-                    <blockquote>
-                        &ldquo;If you’re looking for a top quality hotel look no further. We were upgraded free of
-                        charge to the Premium Suite, thanks so much&rdquo;
-                    </blockquote>
-                    <p class="author"><cite>Jane Doe</cite></p>
-                </div>
-            </div>
+            {% endfor %}
         </div>
     </div>
 </div>

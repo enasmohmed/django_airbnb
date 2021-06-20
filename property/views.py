@@ -16,7 +16,7 @@ from .filters import PropertyFilter
 
 class PropertyList(FilterView):
     model = Property
-    paginate_by = 6   # pagination
+    paginate_by = 8   # pagination
     filterset_class = PropertyFilter  # filter
     template_name = 'property/property_list.html'
 
@@ -28,7 +28,6 @@ class PropertyDetail(FormMixin, DetailView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context["related"] = Property.objects.filter(category=self.get_object().category)[:3]
-        context['review_count'] = PropertyReview.objects.filter(property=self.get_object()).count()
         context["property_images"] = PropertyImages.objects.filter(property=self.get_object().id)
         return context
     

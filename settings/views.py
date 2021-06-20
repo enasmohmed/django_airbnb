@@ -3,11 +3,13 @@ from django.core.mail import send_mail
 from django.db.models import Q, Count
 from django.http import JsonResponse
 from django.shortcuts import render
+
+from accounts.models import Profile
 from .tasks import send_mail_task
 # Create your views here.
 from blog.models import Post
 from project import settings
-from property.models import Place, Property, Category, PropertyRoomFacilities, PropertyBook
+from property.models import Place, Property, Category, PropertyRoomFacilities, PropertyBook, PropertyReview
 from settings.models import Settings, NewsLetter, Services
 
 
@@ -26,6 +28,7 @@ def home(request):
     places_count = Place.objects.all().annotate(property_count=Count('property_place')).count()
     restaurant_count = Property.objects.filter(category__name='Restaurant').count()
     hotels_count = Property.objects.filter(category__name='Hotels').count()
+    review_count = PropertyReview.objects.all()[:3]
 
     return render(request, "settings/home.html", {
         'places': places,
@@ -40,6 +43,7 @@ def home(request):
         'restaurant_count': restaurant_count,
         'hotels_count': hotels_count,
         'hotel_facilities': hotel_facilities,
+        'review_count': review_count,
     })
 
 
@@ -76,20 +80,41 @@ def contact(request):
 
 
 def dashboard(request):
+    category = Category.objects.all()
     users_count = User.objects.all().count()
     places_count = Place.objects.all().annotate(property_count=Count('property_place')).count()
     restaurant_count = Property.objects.filter(category__name='Restaurant').count()
     hotels_count = Property.objects.filter(category__name='Hotels').count()
     posts_count = Post.objects.all().count()
     booking_count = PropertyBook.objects.all().count()
+    review_count = PropertyReview.objects.all().count()
+    hotel_facilities = PropertyRoomFacilities.objects.all().count()
+    property = Property.objects.all()
+    profile = Profile.objects.get(user=request.user)
+
     return render(request,'settings/dashboard.html', {
+        'profile': profile,
+        'property': property,
         'users_count': users_count,
         'places_count': places_count,
         'restaurant_count': restaurant_count,
         'hotels_count': hotels_count,
         'posts_count': posts_count,
-        'booking_count': booking_count
+        'booking_count': booking_count,
+        'review_count': review_count,
+        'hotel_facilities': hotel_facilities,
+        'category': category
     })
+
+
+def dashboard_search(request):
+    name = request.GET.get('name')
+
+    property_list = Property.objects.filter(
+        Q(name__icontains=name)
+    )
+
+    return render(request,"settings/home_search.html", {'property_list': property_list})
 
 
 def news_letter_subscribe(request):

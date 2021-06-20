@@ -22,49 +22,44 @@
 
 		<div class="container mt-5">
 			<div class="row">
-				<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-					<ol class="carousel-indicators">
-						<li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-						<li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-						<li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-					</ol>
-					<div class="carousel-inner">
+				<div id="window" class="m-auto">
+					<div id="slide-container">
 						{% for image in property_images %}
-						<div class="carousel-item {% if forloop.first %}active{% endif %}">
-							<img class="d-block mx-auto" src="{{image.image.url}}" alt="First slide" style="max-width: 60%;
-										padding: 40px 0;
-										overflow: hidden;
-										position: relative;">
+						<div class="slides">
+							<!-- First image -->
+							<img class="slide " src="{{image.image.url}}">
 						</div>
 						{% endfor %}
+
+						<a id="previous" class="arrow">&#10094</a>
+						<a id="next" class="arrow">&#10095</a>
 					</div>
-					<a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-						<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-						<span class="sr-only">Previous</span>
-					</a>
-					<a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-						<span class="carousel-control-next-icon" aria-hidden="true"></span>
-						<span class="sr-only">Next</span>
-					</a>
+					<div id="dotsContainer"></div>
 				</div>
+
 				<section class="ftco-section ftco-degree-bg">
 					<div class="container">
 						<div class="row">
 							<div class="col-lg-10 mx-auto">
 								<div class="row">
-									<div class="col-md-12 hotel-single mt-5 mb-5 ftco-animate">
+									<div class="col-md-12 hotel-single mb-5 ftco-animate">
 										<span>Our Best hotels &amp; Rooms</span>
 										<h2>{{object.name}}</h2>
 										<p class="rate mb-5">
 											<span class="loc"><a href="#"><i class="icon-map"></i>
 													{{object.place}}</a></span>
 											<span class="start-rating">
-													<i class="fa fa-star color_star{% if property.avaregereview < 1%}-o empty{% endif%}"></i>
-													<i class="fa fa-star color_star{% if property.avaregereview < 2%}-o empty{% endif%}"></i>
-													<i class="fa fa-star color_star{% if property.avaregereview < 3%}-o empty{% endif%}"></i>
-													<i class="fa fa-star color_star{% if property.avaregereview < 4%}-o empty{% endif%}"></i>
-													<i class="fa fa-star color_star{% if property.avaregereview < 5%}-o empty{% endif%}"></i>
-													  <span>{{ property.avaregereview }} Rating </span>
+												<i
+													class="fa fa-star color_star{% if property.avaregereview < 1%}-o empty{% endif%}"></i>
+												<i
+													class="fa fa-star color_star{% if property.avaregereview < 2%}-o empty{% endif%}"></i>
+												<i
+													class="fa fa-star color_star{% if property.avaregereview < 3%}-o empty{% endif%}"></i>
+												<i
+													class="fa fa-star color_star{% if property.avaregereview < 4%}-o empty{% endif%}"></i>
+												<i
+													class="fa fa-star color_star{% if property.avaregereview < 5%}-o empty{% endif%}"></i>
+												<span>{{ property.avaregereview }} Rating </span>
 											</span>
 										</p>
 										<p>{{object.description|safe}}</p>
@@ -73,7 +68,7 @@
 										{% if messages %}
 										<div class="alert alert-success text-center" role="alert">
 											{% for message in messages %}
-											  {{ message }}
+											{{ message }}
 											{% endfor %}
 										</div>
 										{% endif %}
@@ -101,31 +96,35 @@
 										<div class="row">
 											<div class="col-md-6">
 												<a href="{% url 'accounts:add_feedback' property.slug %}">
-													<button type="button" class="btn btn-primary">Add Review & Rating</button></a>
+													<button type="button" class="btn btn-primary">Add Review &
+														Rating</button></a>
 											</div>
 										</div>
 									</div>
 									<div class="col-md-12 hotel-single ftco-animate mb-5 mt-5">
 										<h4 class="mb-4">Related Hotels</h4>
 										<div class="row">
-
 											{% for property in related %}
 											<div class="col-md-4">
-												<div class="card">
-													<img class="card-img-top" src="{{property.image.url}}"
-														alt="Card image cap">
+												<div class="card_detail">
+													<img class="card-img-top" src="{{property.image.url}}" alt="Card image cap" style="height: 19rem;">
 													<div class="text p-3">
 														<div class="d-flex">
 															<div class="one">
 																<h3><a href="hotel-single.html">{{property.name}}</a>
 																</h3>
 																<p class="start-rating">
-																	<i class="fa fa-star color_star{% if property.avaregereview < 1%}-o empty{% endif%}"></i>
-																	<i class="fa fa-star color_star{% if property.avaregereview < 2%}-o empty{% endif%}"></i>
-																	<i class="fa fa-star color_star{% if property.avaregereview < 3%}-o empty{% endif%}"></i>
-																	<i class="fa fa-star color_star{% if property.avaregereview < 4%}-o empty{% endif%}"></i>
-																	<i class="fa fa-star color_star{% if property.avaregereview < 5%}-o empty{% endif%}"></i>
-																	   {{ property.avaregereview }} Rating
+																	<i
+																		class="fa fa-star color_star{% if property.avaregereview < 1%}-o empty{% endif%}"></i>
+																	<i
+																		class="fa fa-star color_star{% if property.avaregereview < 2%}-o empty{% endif%}"></i>
+																	<i
+																		class="fa fa-star color_star{% if property.avaregereview < 3%}-o empty{% endif%}"></i>
+																	<i
+																		class="fa fa-star color_star{% if property.avaregereview < 4%}-o empty{% endif%}"></i>
+																	<i
+																		class="fa fa-star color_star{% if property.avaregereview < 5%}-o empty{% endif%}"></i>
+																	{{ property.avaregereview }} Rating
 																</p>
 															</div>
 															<hr />
@@ -138,7 +137,7 @@
 														<p class="bottom-area d-flex">
 															<span><i class="fa fa-map-marker"></i>
 																{{property.place}}</span>
-															<span class="ml-auto"><a href="#">Book Now</a></span>
+															<span class="ml-auto book-now"><a href="{{property.get_absolute_url}}">Book Now</a></span>
 														</p>
 													</div>
 												</div>
@@ -155,13 +154,19 @@
 													<div class="text p-4">
 														<div class="d-flex">
 															<div class="one">
-																<h3><a href="{% url 'accounts:profile' %}">User: {{review.author}}</a></h3>
+																<h3><a href="{% url 'accounts:profile' %}">User:
+																		{{review.author}}</a></h3>
 																<p class="start-rating">Rate:
-																	<i class="fa fa-star color_star{% if property.avaregereview < 1%}-o empty{% endif%}"></i>
-																	<i class="fa fa-star color_star{% if property.avaregereview < 2%}-o empty{% endif%}"></i>
-																	<i class="fa fa-star color_star{% if property.avaregereview < 3%}-o empty{% endif%}"></i>
-																	<i class="fa fa-star color_star{% if property.avaregereview < 4%}-o empty{% endif%}"></i>
-																	<i class="fa fa-star color_star{% if property.avaregereview < 5%}-o empty{% endif%}"></i>
+																	<i
+																		class="fa fa-star color_star{% if property.avaregereview < 1%}-o empty{% endif%}"></i>
+																	<i
+																		class="fa fa-star color_star{% if property.avaregereview < 2%}-o empty{% endif%}"></i>
+																	<i
+																		class="fa fa-star color_star{% if property.avaregereview < 3%}-o empty{% endif%}"></i>
+																	<i
+																		class="fa fa-star color_star{% if property.avaregereview < 4%}-o empty{% endif%}"></i>
+																	<i
+																		class="fa fa-star color_star{% if property.avaregereview < 5%}-o empty{% endif%}"></i>
 																	<span>{{ property.avaregereview }} Rating </span>
 																</p>
 															</div>
@@ -187,4 +192,58 @@
 
 	</div>
 </div>
+
+<script>
+	var index = 0;
+
+	var slides = document.getElementsByClassName("slides");
+	var nextArrow = document.getElementById("next");
+
+	var previousArrow = document.getElementById("previous");
+
+	var place = document.getElementById("place");
+
+	var dotsContainer = document.getElementById("dotsContainer");
+
+	var dotArray = document.getElementsByClassName("dots");
+
+	createDots();
+	showSlides(index);
+
+	function createDots() {
+		for (i = 0; i < slides.length; i++) {
+			var dot = document.createElement("span");
+			dot.className = "dots";
+			dotsContainer.appendChild(dot);
+		}
+	}
+
+	function showSlides(x) {
+		if (x > slides.length - 1) {
+			index = 0;
+		}
+		if (x < 0) {
+			index = slides.length - 1;
+		}
+		for (i = 0; i < slides.length; i++) {
+			slides[i].style.display = "none";
+			dotArray[i].className = "dots";
+		}
+
+		slides[index].style.display = "block";
+		dotArray[index].className += " activeDot";
+	}
+
+	nextArrow.onclick = function () {
+		index += 1;
+		showSlides(index);
+	}
+
+	previousArrow.onclick = function () {
+		index -= 1;
+		showSlides(index);
+	}
+
+	dotArray[0].onclick = showSlides(1);
+</script>
 {% endblock body %}

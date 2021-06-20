@@ -37,14 +37,14 @@
                                         </div>
                                         <div class="desc">
                                             <h3><a href="{{property.get_absolute_url}}">{{property.name}}</a></h3>
-                                            <div class="start-rating">
-                                                <span class="fa fa-star checked"></span>
-                                                <span class="fa fa-star checked"></span>
-                                                <span class="fa fa-star checked"></span>
-                                                <span class="fa fa-star"></span>
-                                                <span class="fa fa-star"></span>
-                                                <!--                  <span>8 Rating</span>-->
-                                            </div>
+											  <div class="start-rating">
+												<i class="fa fa-star color_star{% if property.avaregereview < 1%}-o empty{% endif%}"></i>
+												<i class="fa fa-star color_star{% if property.avaregereview < 2%}-o empty{% endif%}"></i>
+												<i class="fa fa-star color_star{% if property.avaregereview < 3%}-o empty{% endif%}"></i>
+												<i class="fa fa-star color_star{% if property.avaregereview < 4%}-o empty{% endif%}"></i>
+												<i class="fa fa-star color_star{% if property.avaregereview < 5%}-o empty{% endif%}"></i>
+												<span>{{ property.avaregereview}} Rating</span>
+											</div><hr/>
                                             <!-- <p>{{property.description|safe|truncatewords:3}}</p>
                                             <p><i class="fa fa-clock-o"></i> {{property.created_at}}</p> -->
                                             <span><i class="fa fa-map-marker"></i> {{property.place}}</span>
