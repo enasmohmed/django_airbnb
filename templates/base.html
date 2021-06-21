@@ -74,23 +74,23 @@
                             </h1>
                             <nav id="fh5co-menu-wrap" role="navigation">
                                 <ul class="sf-menu" id="fh5co-primary-menu">
-                                    <li><a class="active" href="/">{% trans "Home" %}</a></li>
-                                    <li><a href="{% url 'property:property_list' %}">{% trans "Properties" %}</a></li>
-                                    <li><a href="{% url 'about:about' %}">{% trans "About" %}</a></li>
-                                    <li><a href="{% url 'blog:post_list' %}">{% trans "Blog" %}</a></li>
-                                    <li><a href="{% url 'home:contact' %}">{% trans "Contact" %}</a></li>
-                                    <li><a href="{% url 'home:services' %}">{% trans "Services" %}</a></li>
+                                    <li><a class="active" href="/">{% translate "Home" %}</a></li>
+                                    <li><a href="{% url 'property:property_list' %}">{% translate "Properties" %}</a></li>
+                                    <li><a href="{% url 'about:about' %}">{% translate "About" %}</a></li>
+                                    <li><a href="{% url 'blog:post_list' %}">{% translate "Blog" %}</a></li>
+                                    <li><a href="{% url 'home:contact' %}">{% translate "Contact" %}</a></li>
+                                    <li><a href="{% url 'home:services' %}">{% translate "Services" %}</a></li>
                                     {% if request.user.is_authenticated %}
-                                    <li class="cta"><a class="fh5co-sub-ddown bord" href="{% url 'accounts:profile' %}"><span>Profile</span></a>
+                                    <li class="cta"><a class="fh5co-sub-ddown bord" href="{% url 'accounts:profile' %}"><span>{% translate "Profile" %}</span></a>
                                         <ul class="fh5co-sub-menu">
-                                            <li><a href="{% url 'property:property_new' %}" target="_blank">Add Listing</a></li>
-                                            <li><a href="{% url 'settings:dashboard' %}" target="_blank">Dashboard</a></li>
-                                            <li><a href="{% url 'logout' %}" target="_blank">Logout</a></li>
+                                            <li><a href="{% url 'property:property_new' %}" target="_blank">{% translate "Add Listing" %}</a></li>
+                                            <li><a href="{% url 'settings:dashboard' %}" target="_blank">{% translate "Dashboard" %}</a></li>
+                                            <li><a href="{% url 'logout' %}" target="_blank">{% translate "Logout" %}</a></li>
                                         </ul>
                                     </li>
                                     {% else %}
-                                    <li class="cta"><a class="bord" href="{% url 'login' %}"><span>Login</span></a></li>
-                                    <li class="cta"><a class="bord" href="{% url 'accounts:signup' %}"><span>Signup</span></a></li>
+                                    <li class="cta"><a class="bord" href="{% url 'login' %}"><span>{% translate "Login" %}</span></a></li>
+                                    <li class="cta"><a class="bord" href="{% url 'accounts:signup' %}"><span>{% translate "Signup" %}</span></a></li>
                                     {% endif %}
                                     <li>
                                         <form action="{% url 'set_language' %}" method="post"  class="form-lang">
@@ -134,8 +134,7 @@
                                 <h3><i class="fa fa-h-square"></i> {{myfooter.site_name}}</h3>
                                 <p>{{myfooter.description}}</p>
                                 <p><small>&copy; 2021 {{myfooter.site_name}} <br> All Rights Reserved. <br>
-                                        Designed by <a href="https://enasmohmed.github.io/-CV/" target="_blank">Enas
-                                            Mohamed</a> <br>
+                                        Designed by <a href="https://enasmohmed.github.io/-CV/" target="_blank">Enas Mohamed</a> <br>
                                     </small>
                                 </p>
                             </div>
@@ -143,16 +142,16 @@
                         <div class="col-md-6">
                             <div class="row">
                                 <div class="col-md-6">
-                                    <h3>Company</h3>
+                                    <h3>{% translate "Company" %}</h3>
                                     <ul class="link">
-                                        <li><a href="{% url 'about:about' %}">About Us</a></li>
-                                        <li><a href="{% url 'property:property_list' %}">Hotels</a></li>
-                                        <li><a href="{% url 'blog:post_list' %}">Blog</a></li>
-                                        <li><a href="{% url 'home:contact' %}">Contact Us</a></li>
+                                        <li><a href="{% url 'about:about' %}">{% translate "About Us" %}</a></li>
+                                        <li><a href="{% url 'property:property_list' %}">{% translate "Hotels" %}</a></li>
+                                        <li><a href="{% url 'blog:post_list' %}">{% translate "Blog" %}</a></li>
+                                        <li><a href="{% url 'home:contact' %}">{% translate "Contact Us" %}</a></li>
                                     </ul>
                                 </div>
                                 <div class="col-md-6 block-23">
-                                    <h3>Subscribe</h3>
+                                    <h3>{% translate "Subscribe" %}</h3>
                                     <p><i class="fa fa-map-marker"></i> {{myfooter.address}} </p>
                                     <p><i class="fa fa-phone"></i> {{myfooter.phone}} </p>
                                     <p><i class="fa fa-envelope"></i> {{myfooter.email}} </p>
@@ -160,7 +159,7 @@
                             </div>
                         </div>
                         <div class="col-md-3">
-                            <h3>Follow</h3>
+                            <h3>{% translate "Follow" %}</h3>
                             <ul class="social-icons">
                                 <li>
                                     <a href="#"><i class="icon-twitter-with-circle"></i></a>

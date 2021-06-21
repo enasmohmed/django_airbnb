@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load i18n %}
 {% block body %}
 
 <aside id="fh5co-hero" class="js-fullheight">
@@ -91,22 +92,22 @@
             <div class="col-md-3 text-center">
                 <span class="fh5co-counter js-counter" data-from="0" data-to="{{users_count}}" data-speed="5000"
                     data-refresh-interval="50"></span>
-                <span class="fh5co-counter-label">Happy Customers</span>
+                <span class="fh5co-counter-label">{% translate "Happy Customers" %}</span>
             </div>
             <div class="col-md-3 text-center">
                 <span class="fh5co-counter js-counter" data-from="0" data-to="{{hotels_count}}" data-speed="5000"
                     data-refresh-interval="50"></span>
-                <span class="fh5co-counter-label">Hotels</span>
+                <span class="fh5co-counter-label">{% translate "Hotels" %}</span>
             </div>
             <div class="col-md-3 text-center">
                 <span class="fh5co-counter js-counter" data-from="0" data-to="{{places_count}}" data-speed="5000"
                     data-refresh-interval="50"></span>
-                <span class="fh5co-counter-label">Destination Places</span>
+                <span class="fh5co-counter-label">{% translate "Destination Places" %}</span>
             </div>
             <div class="col-md-3 text-center">
                 <span class="fh5co-counter js-counter" data-from="0" data-to="{{restaurant_count}}" data-speed="5000"
                     data-refresh-interval="50"></span>
-                <span class="fh5co-counter-label">Restaurant</span>
+                <span class="fh5co-counter-label">{% translate "Restaurant" %}</span>
             </div>
         </div>
     </div>
@@ -116,7 +117,7 @@
     <div class="container">
         <div class="row blog">
             <div class="col-6">
-                <h3 class="mb-3"><strong>Featured</strong> Destination</h3>
+                <h3 class="mb-3"><strong>{% translate "Featured" %}</strong> {% translate "Destination" %}</h3>
             </div>
             <div class="col-md-12">
                 <div id="blogCarousel" class="carousel slide" data-ride="carousel">
@@ -138,7 +139,7 @@
                                     </a>
                                     <div class="card-body">
                                         <h4 class="card-title">{{place.name}}</h4>
-                                        <p class="card-text">{{place.property_count}} Listing</p>
+                                        <p class="card-text">{{place.property_count}} {% translate "Listing" %}</p>
                                     </div>
                                 </div>
                                 {% endfor %}
@@ -203,23 +204,22 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="section-title text-center">
-                    <h2>Featured Hotels</h2>
+                    <h2>{% translate "Featured Hotels" %}</h2>
                 </div>
             </div>
         </div>
-
         <div class="row">
             {% for hotel in hotels_list %}
             <div class="feature-full-1col">
                 <div class="image" style="background-image: url({{hotel.image.url}});">
                     <div class="descrip text-center">
-                        <p><small>For as low as</small><span>${{hotel.price}}/night</span></p>
+                        <p><small>{% translate "For as low as" %}</small><span>${{hotel.price}}/{% translate "night" %}</span></p>
                     </div>
                 </div>
                 <div class="desc">
                     <h3><a href="{{hotel.get_absolute_url}}">{{hotel.name}}</a></h3>
                     <p>{{hotel.description|safe}} </p>
-                    <p><a href="{{hotel.get_absolute_url}}" class="btn btn-primary btn-luxe-primary">Book Now <i
+                    <p><a href="{{hotel.get_absolute_url}}" class="btn btn-primary btn-luxe-primary">{% translate "Book Now" %} <i
                                 class="ti-angle-right"></i></a></p>
                 </div>
             </div>
@@ -246,12 +246,13 @@
     </div>
 </div>
 
+
 <div id="hotel-facilities">
     <div class="container">
         <div class="row">
             <div class="col-md-12">
                 <div class="section-title text-center">
-                    <h2>Hotel Facilities</h2>
+                    <h2>{% translate "Hotel Facilities" %}</h2>
                 </div>
             </div>
         </div>
@@ -279,7 +280,7 @@
                                 <h3 class="heading">{{hotel_fac.name}}</h3>
                                 <p>{{hotel_fac.description|safe}}</p>
                                 <p class="service-hour">
-                                    <span>Service Hours</span>
+                                    <span>{% translate "Service Hours" %}</span>
                                     <strong>{{hotel_fac.service_hours_date_from|time:"G:i A"}} -
                                         {{hotel_fac.service_hours_date_to|time:"G:i A"}}</strong>
                                 </p>
@@ -297,7 +298,7 @@
     <div class="container">
         <div class="row">
             <div class="section-title text-center">
-                <h2>Featured Restaurant</h2>
+                <h2>{% translate "Featured Restaurant" %}</h2>
             </div>
         </div>
         <div class="col-lg-12">
@@ -306,24 +307,28 @@
                 <div class="col-md-3">
                     <div class="hotel-content" style="width: 109%;">
                         <div class="hotel-grid" style="background-image: url({{restaurant.image.url}});">
-                            <div class="price"><small>For as low as</small><span>${{restaurant.price}}/night</span>
+                            <div class="price"><small>{% translate "For as low as" %}</small><span>${{restaurant.price}}/{% translate "night" %}</span>
                             </div>
                             <a class="book-now text-center" href="{{restaurant.get_absolute_url}}"><i
-                                    class="ti-calendar"></i> Book
-                                Now</a>
+                                    class="ti-calendar"></i> {% translate "Book Now" %}</a>
                         </div>
                         <div class="desc">
                             <h3><a href="{{restaurant.get_absolute_url}}">{{restaurant.name}}</a></h3>
                             <div class="start-rating">
-                                <i class="fa fa-star color_star{% if restaurant.avaregereview < 1%}-o empty{% endif%}"></i>
-                                <i class="fa fa-star color_star{% if restaurant.avaregereview < 2%}-o empty{% endif%}"></i>
-                                <i class="fa fa-star color_star{% if restaurant.avaregereview < 3%}-o empty{% endif%}"></i>
-                                <i class="fa fa-star color_star{% if restaurant.avaregereview < 4%}-o empty{% endif%}"></i>
-                                <i class="fa fa-star color_star{% if restaurant.avaregereview < 5%}-o empty{% endif%}"></i>
+                                <i
+                                    class="fa fa-star color_star{% if restaurant.avaregereview < 1%}-o empty{% endif%}"></i>
+                                <i
+                                    class="fa fa-star color_star{% if restaurant.avaregereview < 2%}-o empty{% endif%}"></i>
+                                <i
+                                    class="fa fa-star color_star{% if restaurant.avaregereview < 3%}-o empty{% endif%}"></i>
+                                <i
+                                    class="fa fa-star color_star{% if restaurant.avaregereview < 4%}-o empty{% endif%}"></i>
+                                <i
+                                    class="fa fa-star color_star{% if restaurant.avaregereview < 5%}-o empty{% endif%}"></i>
                                 <span>{{ restaurant.avaregereview}} Rating</span>
                             </div>
 
-                            <hr/>
+                            <hr />
                             <span><i class="fa fa-map-marker"></i> {{restaurant.place}}</span>
                         </div>
                     </div>
@@ -339,25 +344,30 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="section-title text-center">
-                    <h2>Happy Customer Says...</h2>
+                    <h2>{% translate "Happy Customer Says..." %}</h2>
                 </div>
             </div>
         </div>
         <div class="row">
             {% for review in review_count %}
-                <div class="col-md-4">
+            <div class="col-md-4">
                 <div class="testimony">
                     <blockquote>
-                         &ldquo;{{review.feedback}}&rdquo;<br/>
-                         <i class="fa fa-bed"></i> {{review.property}}
-                        <br/>
+                        &ldquo;{{review.feedback}}&rdquo;<br />
+                        {{review.property}}
+                        <br />
                         <p class="start-rating">
-                            <i class="fa fa-star color_star{% if review.property.avaregereview < 1%}-o empty{% endif%}"></i>
-                            <i class="fa fa-star color_star{% if review.property.avaregereview < 2%}-o empty{% endif%}"></i>
-                            <i class="fa fa-star color_star{% if review.property.avaregereview < 3%}-o empty{% endif%}"></i>
-                            <i class="fa fa-star color_star{% if review.property.avaregereview < 4%}-o empty{% endif%}"></i>
-                            <i class="fa fa-star color_star{% if review.property.avaregereview < 5%}-o empty{% endif%}"></i>
-                            <span>{{ review.property.avaregereview }} Rating </span>
+                            <i
+                                class="fa fa-star color_star{% if review.property.avaregereview < 1%}-o empty{% endif%}"></i>
+                            <i
+                                class="fa fa-star color_star{% if review.property.avaregereview < 2%}-o empty{% endif%}"></i>
+                            <i
+                                class="fa fa-star color_star{% if review.property.avaregereview < 3%}-o empty{% endif%}"></i>
+                            <i
+                                class="fa fa-star color_star{% if review.property.avaregereview < 4%}-o empty{% endif%}"></i>
+                            <i
+                                class="fa fa-star color_star{% if review.property.avaregereview < 5%}-o empty{% endif%}"></i>
+                            <span>{{ review.property.avaregereview }} {% translate "Rating" %} </span>
                         </p>
                     </blockquote>
                     <p class="author"><cite><i class="fa fa-user-circle"></i> {{review.author}}</cite></p>
@@ -374,7 +384,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="section-title text-center">
-                    <h2>Our Blog</h2>
+                    <h2>{% translate "Our Blog" %}</h2>
                 </div>
             </div>
         </div>
@@ -384,7 +394,7 @@
                 <div class="blog-grid" style="background-image: url({{post.image.url}});">
                     <div class="date text-center">
                         <span><i class="fa fa-eye" style="width:16px"></i> ({{post.post_views}})</span>
-<!--                        <small>New</small>-->
+                        <!--                        <small>New</small>-->
                     </div>
                 </div>
                 <div class="desc">
@@ -407,45 +417,48 @@
     <div class="container">
         <div class="row">
             <div id="main_form_div" class="section-title text-center">
-                <h2>Subscribe to our Newsletter</h2>
-                <p>Far far away, behind the word mountains, far from the countries Vokalia and<br> Consonantia, there
-                    live the blind texts. Separated they live in
+                <h2>{% translate "Subscribe to our Newsletter" %}</h2>
+                <p>{% translate "Far far away, behind the word mountains, far from the countries Vokalia and" %}<br>
+                    Consonantia, there live the blind texts. Separated they live in
                 </p>
                 <div class="row mt-5">
                     <div class="col-md-6 mx-auto">
-                        <form id="newsletter_form" action="{% url 'home:newsletter' %}" class="subscribe-form" method="POST">
+                        <form id="newsletter_form" action="{% url 'home:newsletter' %}" class="subscribe-form"
+                            method="POST">
                             {% csrf_token %}
                             <div class="form-group d-flex">
-                                <input type="text" class="form-control" name="emailInput" placeholder="Enter email address">
-                                <input type="submit" value="Subscribe"  class="submit px-3">
+                                <input type="text" class="form-control" name="emailInput"
+                                    placeholder="Enter email address">
+                                <input type="submit" value="Subscribe" class="submit px-3">
                             </div>
                         </form>
                     </div>
                 </div>
             </div>
             <div id="success_div" style="display:none" class="section-title text-center">
-                <h2 style="color: #fff;">Subscribed Successfully</h2>
+                <h2 style="color: #fff;">{% translate "Subscribed Successfully" %}</h2>
             </div>
         </div>
     </div>
 </div>
 
 
-<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"
+    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 <script>
-    $("#newsletter_form").submit(function(e){
+    $("#newsletter_form").submit(function (e) {
         e.preventDefault();
         var form = $(this);
         var url = form.attr('action');
-    $.ajax({
-        type:'POST',
-        url:url,
-        data:form.serialize(),
-        success:function(data){
-            document.getElementById('main_form_div').style.display='none';
-            document.getElementById('success_div').style.display='block';
-        }
-    });
+        $.ajax({
+            type: 'POST',
+            url: url,
+            data: form.serialize(),
+            success: function (data) {
+                document.getElementById('main_form_div').style.display = 'none';
+                document.getElementById('success_div').style.display = 'block';
+            }
+        });
     });
 </script>
 

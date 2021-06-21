@@ -32,6 +32,7 @@ ALLOWED_HOSTS = ['hoteldjango12.herokuapp.com', '127.0.0.1', '*']
 
 INSTALLED_APPS = [
     'accounts',
+    'modeltranslation',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -51,7 +52,6 @@ INSTALLED_APPS = [
     'django_summernote',
     'bootstrap4',
     'django_filters',
-    'tof',
     'coverage',
     'django_seed',
 
@@ -140,12 +140,17 @@ AUTH_PASSWORD_VALIDATORS = [
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
 
 LANGUAGE_CODE = 'en-us'
-# LANGUAGE_CODE = 'ar'
 
 LANGUAGES = [
     ('en', ('English')),
     ('ar', ('Arabic')),
 ]
+MODELTRANSLATION_LANGUAGES = ('en', 'ar')
+
+MODELTRANSLATION_TRANSLATION_FILES = (
+    'property.translation',
+)
+
 TIME_ZONE = 'UTC'
 
 USE_I18N = True

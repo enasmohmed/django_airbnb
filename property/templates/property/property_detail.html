@@ -25,9 +25,9 @@
 				<div id="window" class="m-auto">
 					<div id="slide-container">
 						{% for image in property_images %}
-						<div class="slides">
+						<div class="slides" style="border: 1px solid #ddd;">
 							<!-- First image -->
-							<img class="slide " src="{{image.image.url}}">
+							<img class="slide" src="{{image.image.url}}">
 						</div>
 						{% endfor %}
 

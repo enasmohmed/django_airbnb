@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-31 08:18+0000\n"
+"POT-Creation-Date: 2021-06-21 17:50+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -31,42 +31,194 @@ msgstr "عنوان"
 msgid "tags"
 msgstr "العلامات"
 
-#: blog/models.py:17
+#: blog/models.py:18
 msgid "image"
 msgstr "صورة"
 
-#: blog/models.py:18
+#: blog/models.py:19
 msgid "created at"
 msgstr "تاريخ الانشاء"
 
-#: blog/models.py:19
+#: blog/models.py:20
 msgid "description"
 msgstr "الوصف"
 
-#: blog/models.py:20
+#: blog/models.py:21
 msgid "category"
 msgstr "التصنيف"
 
-#: blog/models.py:21
+#: blog/models.py:22
 msgid "url"
 msgstr "الرابط"
 
-#: templates/base.html:73
+#: blog/models.py:39
+msgid "slug"
+msgstr ""
+
+#: settings/templates/settings/home.html:95
+msgid "Happy Customers"
+msgstr "العملاء"
+
+#: settings/templates/settings/home.html:100 templates/base.html:148
+msgid "Hotels"
+msgstr "فنادق"
+
+#: settings/templates/settings/home.html:105
+msgid "Destination Places"
+msgstr "وجهات الاماكن"
+
+#: settings/templates/settings/home.html:110
+msgid "Restaurant"
+msgstr "مطاعم"
+
+#: settings/templates/settings/home.html:120
+msgid "Featured"
+msgstr "متميز"
+
+#: settings/templates/settings/home.html:120
+#, fuzzy
+#| msgid "description"
+msgid "Destination"
+msgstr "الوصف"
+
+#: settings/templates/settings/home.html:142
+#, fuzzy
+#| msgid "Add Listing"
+msgid "Listing"
+msgstr "قائمة"
+
+#: settings/templates/settings/home.html:207
+msgid "Featured Hotels"
+msgstr "الفنادق المميزة"
+
+#: settings/templates/settings/home.html:216
+#: settings/templates/settings/home.html:310
+msgid "For as low as"
+msgstr "لتصل إلى"
+
+#: settings/templates/settings/home.html:216
+#: settings/templates/settings/home.html:310
+msgid "night"
+msgstr "الليلة"
+
+#: settings/templates/settings/home.html:222
+#: settings/templates/settings/home.html:313
+msgid "Book Now"
+msgstr "احجزالﻵن"
+
+#: settings/templates/settings/home.html:255
+msgid "Hotel Facilities"
+msgstr "مرافق الفندق"
+
+#: settings/templates/settings/home.html:283
+#, fuzzy
+#| msgid "Services"
+msgid "Service Hours"
+msgstr "خدمات الفنادق"
+
+#: settings/templates/settings/home.html:301
+msgid "Featured Restaurant"
+msgstr "مطاعم مميزة"
+
+#: settings/templates/settings/home.html:347
+msgid "Happy Customer Says..."
+msgstr "....اراء العملاء السعيدة"
+
+#: settings/templates/settings/home.html:370
+msgid "Rating"
+msgstr "تقييم"
+
+#: settings/templates/settings/home.html:387
+#, fuzzy
+#| msgid "Blog"
+msgid "Our Blog"
+msgstr "المدونة"
+
+#: settings/templates/settings/home.html:420
+msgid "Subscribe to our Newsletter"
+msgstr "اشترك في نشرتنا الإخبارية"
+
+#: settings/templates/settings/home.html:421
+msgid ""
+"Far far away, behind the word mountains, far from the countries Vokalia and"
+msgstr "سوف يصلك اخبارنا عن طريق الاشتراك في الموقع"
+
+#: settings/templates/settings/home.html:422
+msgid "Consonantia, there live the blind texts. Separated they live in"
+msgstr ""
+
+#: settings/templates/settings/home.html:439
+msgid "Subscribed Successfully"
+msgstr "تم الاشتراك بنجاح"
+
+#: templates/base.html:77
 msgid "Home"
 msgstr "الرئيسبة"
 
-#: templates/base.html:74
+#: templates/base.html:78
 msgid "Properties"
 msgstr "الواحدات"
 
-#: templates/base.html:75
+#: templates/base.html:79
 msgid "About"
 msgstr "عن الموقع"
 
-#: templates/base.html:76
+#: templates/base.html:80 templates/base.html:149
 msgid "Blog"
 msgstr "المدونة"
 
-#: templates/base.html:77
+#: templates/base.html:81
 msgid "Contact"
 msgstr "التواصل"
+
+#: templates/base.html:82
+msgid "Services"
+msgstr "خدمات"
+
+#: templates/base.html:84
+msgid "Profile"
+msgstr "حسابي"
+
+#: templates/base.html:86
+msgid "Add Listing"
+msgstr "اضافة غرفة"
+
+#: templates/base.html:87
+msgid "Dashboard"
+msgstr "صفحة الادمن"
+
+#: templates/base.html:88
+msgid "Logout"
+msgstr "تسجيل الخروج"
+
+#: templates/base.html:92
+msgid "Login"
+msgstr "تسجيل الدخول"
+
+#: templates/base.html:93
+msgid "Signup"
+msgstr "انشاء حساب"
+
+#: templates/base.html:145
+msgid "Company"
+msgstr "شركة"
+
+#: templates/base.html:147
+#, fuzzy
+#| msgid "About"
+msgid "About Us"
+msgstr "عن الموقع"
+
+#: templates/base.html:150
+#, fuzzy
+#| msgid "Contact"
+msgid "Contact Us"
+msgstr "التواصل"
+
+#: templates/base.html:154
+msgid "Subscribe"
+msgstr "الإشتراك"
+
+#: templates/base.html:162
+msgid "Follow"
+msgstr "تابع"
