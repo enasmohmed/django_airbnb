@@ -1,5 +1,5 @@
 amqp==1.4.9
-anyjson==0.3.3
+anyjson
 appdirs==1.4.3
 asgiref==3.3.4
 beautifulsoup4==4.9.3
